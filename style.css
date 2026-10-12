@@ -255,7 +255,7 @@ section { padding: 72px 0; }
 @media (max-width: 767px) {
   #caseFanLayout[data-case-carousel-3d="true"] .case-carousel-demo { gap: 3.65625rem !important; }
 }
-.cases-head { margin-bottom: clamp(2.75rem, 4vw, 4rem); }
+.cases-head { margin-bottom: 0; }  /* десктоп: щільніше до каруселі (відступ між текстом і фото зменшено) */
 @media (max-width: 1023px) { .cases-head { margin-bottom: clamp(3rem, 6vw, 4rem); } }
 @media (max-width: 767px) { .cases-head { margin-bottom: clamp(4.125rem, 13.5vw, 5.25rem); } }
 .avatar-row {
