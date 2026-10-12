@@ -33,6 +33,8 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
+/* Курсиву на лендингу немає ніде: усі em/i/cite/address прямі */
+em, i, cite, address, dfn, var { font-style: normal; }
 html { scroll-behavior: smooth; overflow-x: clip; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0; overflow-x: clip;
@@ -177,7 +179,7 @@ section { padding: 72px 0; }
 .author ul { list-style: none; padding: 0; margin: 20px 0 0; display: grid; gap: 10px; }
 .author li { position: relative; padding-left: 28px; }
 .author li::before { content: "✓"; position: absolute; left: 0; color: var(--gold-dark); font-weight: 700; }
-.author .name { font-family: var(--font-body); font-style: italic; font-weight: 700; font-size: var(--fs-sub); color: var(--gold-dark); margin-bottom: 10px; }
+.author .name { font-family: var(--font-body); font-weight: 700; font-size: var(--fs-sub); color: var(--gold-dark); margin-bottom: 10px; }
 
 /* Галерея */
 .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }

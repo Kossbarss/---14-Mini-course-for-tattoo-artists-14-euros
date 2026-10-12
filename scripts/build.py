@@ -247,7 +247,7 @@ def build(t, ua):
 <link rel="icon" href="{p}assets/favicon-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@400;700&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wght@700&display=swap&subset=cyrillic,latin" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wght@700&display=swap&subset=cyrillic,latin" rel="stylesheet">
 <link rel="stylesheet" href="{p}style.css">
 <script>document.documentElement.classList.remove('no-js')</script>
 <script type="application/ld+json">{{"@context":"https://schema.org","@graph":[{{"@type":"Course","name":"{e(t['title'])}","description":"{e(t['desc'])}","provider":{{"@type":"Organization","name":"VIP tattoo school"}},"offers":{{"@type":"Offer","price":"14","priceCurrency":"EUR"}}}},{{"@type":"FAQPage","mainEntity":[{faq_ld}]}}]}}</script>
