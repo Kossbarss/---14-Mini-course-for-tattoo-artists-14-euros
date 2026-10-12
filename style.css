@@ -175,12 +175,11 @@ section { padding: 72px 0; }
 /* Автор: блок «Чому моя методика працює» — клон секції instructor з плагіна VIP Tattoo
    (карусель фото + бейдж-ім'я + опис + чек-лист + лічильники). Карусель і лічильники —
    vendor/instructor-carousel.js (збірка з плагіна), монтується в #instructorCarousel. */
-.instructor-wrap { padding: 56px 0; }
-.instructor-section {
-  position: relative; overflow: hidden; border-radius: 24px; color: var(--paper);
+.instructor-wrap {
+  padding: 72px 0; color: var(--paper);
   background: radial-gradient(circle at top right, rgba(253, 144, 77, 0.3) 0%, rgba(201, 162, 74, 0.14) 30%, transparent 55%), var(--ink);
-  padding: 56px 48px;
 }
+.instructor-section { position: relative; overflow: hidden; }
 .section-watermark { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: min(70%, 640px); max-height: 85%; object-fit: contain; opacity: .05; pointer-events: none; z-index: 0; }
 .instructor-layout {
   position: relative; z-index: 1; display: grid; grid-template-columns: .85fr 1.15fr;
@@ -299,7 +298,6 @@ section { padding: 72px 0; }
   section { padding: 56px 0; }
   .hero { padding-top: 150px; }
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
-  .instructor-section { padding: 40px 28px; }
   .instructor-layout { grid-template-columns: 1fr; grid-template-areas: "photo" "identity" "copy"; row-gap: 24px; }
   .instructor-identity { justify-content: center; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
@@ -318,7 +316,6 @@ section { padding: 72px 0; }
   .stats-row { grid-template-columns: 1fr; }
 }
 @media (max-width: 520px) {
-  .instructor-section { padding: 32px 18px; border-radius: 18px; }
   .instructor-name-badge { font-size: 1.05rem; }
   .header .container { flex-direction: column; gap: 12px; }
   .header .lang { position: static; transform: none; align-self: flex-end; order: -1; }
