@@ -14,7 +14,6 @@ UA = dict(
     lang="uk", other_lang="ru", other_label="RU",
     title="Тату Старт: перші лінії за 5 днів — Вікторія Поникарова",
     desc="Онлайн-міні-курс від Вікторії Поникарової, засновниці VIP tattoo school: за 5 днів зробиш перші лінії на штучній шкірі й зрозумієш, чи готовий до першого клієнта. 14 € замість 99 €.",
-    brand_sub="tattoo school",
     badge="Онлайн-міні-курс від Вікторії Поникарової",
     h1="Перші лінії <em>без страху</em> зіпсувати шкіру",
     sub="Хочеш у тату, але не знаєш, з чого почати, і боїшся дорогих помилок? За 5 днів ти зробиш перші лінії на штучній шкірі й зрозумієш, чи твоя це професія.",
@@ -105,7 +104,6 @@ RU = dict(
     lang="ru", other_lang="", other_label="UA",
     title="Тату Старт: первые линии за 5 дней — Виктория Поникарова",
     desc="Онлайн-мини-курс от Виктории Поникаровой, основательницы VIP tattoo school: за 5 дней сделаешь первые линии на искусственной коже и поймёшь, готов ли к первому клиенту. 14 € вместо 99 €.",
-    brand_sub="tattoo school",
     badge="Онлайн-мини-курс от Виктории Поникаровой",
     h1="Первые линии <em>без страха</em> испортить кожу",
     sub="Хочешь в тату, но не знаешь, с чего начать, и боишься дорогих ошибок? За 5 дней ты сделаешь первые линии на искусственной коже и поймёшь, твоя ли это профессия.",
@@ -249,7 +247,7 @@ def build(t, ua):
 <link rel="icon" href="{p}assets/favicon-logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap&subset=cyrillic,latin" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:wght@400;700&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wght@700&display=swap&subset=cyrillic,latin" rel="stylesheet">
 <link rel="stylesheet" href="{p}style.css">
 <script>document.documentElement.classList.remove('no-js')</script>
 <script type="application/ld+json">{{"@context":"https://schema.org","@graph":[{{"@type":"Course","name":"{e(t['title'])}","description":"{e(t['desc'])}","provider":{{"@type":"Organization","name":"VIP tattoo school"}},"offers":{{"@type":"Offer","price":"14","priceCurrency":"EUR"}}}},{{"@type":"FAQPage","mainEntity":[{faq_ld}]}}]}}</script>
@@ -258,7 +256,7 @@ def build(t, ua):
 
 <header class="header">
   <div class="container">
-    <a class="brand" href="#top"><img src="{p}assets/logo-mark.png" alt="" width="30" height="30"><span>VIP <small>{t['brand_sub']}</small></span></a>
+    <a class="brand" href="#top"><img src="{p}assets/logo-mark.png" alt="VIP tattoo school" width="56" height="56">VIP tattoo school</a>
     <nav class="lang" aria-label="Language">
       <a href="{lang_ua}" {'aria-current="true"' if ua else ''} hreflang="uk">UA</a>
       <a href="{lang_ru}" {'' if ua else 'aria-current="true"'} hreflang="ru">RU</a>
