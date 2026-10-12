@@ -212,6 +212,24 @@ section { padding: 72px 0; }
 .stat-value .leading-none { line-height: 1; }
 .stat-value .inline-flex { display: inline-flex; } .stat-value .tabular-nums { font-variant-numeric: tabular-nums; }
 .stat-value .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+/* Світлий варіант фону блоку автора (клас instructor-wrap--light у build.py; приберіть клас — повернеться темний) */
+.instructor-wrap--light {
+  color: var(--ink);
+  background: radial-gradient(circle at top right, rgba(253, 144, 77, 0.16) 0%, rgba(201, 162, 74, 0.10) 30%, transparent 55%), var(--paper);
+}
+.instructor-wrap--light .section-watermark { opacity: .045; }
+.instructor-wrap--light .title { color: var(--ink); }
+.instructor-wrap--light .instructor-text { color: var(--ink-soft); }
+.instructor-wrap--light .instructor-checklist .check { color: var(--gold-dark); }
+.instructor-wrap--light .instructor-checklist strong { color: var(--ink); }
+.instructor-wrap--light .stats-row { border-top-color: var(--border); }
+.instructor-wrap--light .stat-value { color: var(--gold-dark); }
+.instructor-wrap--light .stat-label { color: var(--muted); }
+.instructor-wrap--light .instructor-carousel-mount .testimonial-image { box-shadow: 0 14px 34px rgba(21, 17, 15, .22); }
+/* кольори підписів каруселі задані скриптом під темний фон — перекриваємо для світлого */
+.instructor-wrap--light .instructor-carousel-mount .name { color: var(--ink) !important; }
+.instructor-wrap--light .instructor-carousel-mount .designation { color: var(--gold-dark) !important; }
+.instructor-wrap--light .instructor-carousel-mount .quote { color: var(--ink-soft) !important; }
 /* карусель фото (circular testimonials) */
 .instructor-carousel-mount .testimonial-container { width: 100%; }
 .instructor-carousel-mount .testimonial-grid { display: grid; grid-template-columns: 1fr; gap: 20px; overflow: hidden; padding-top: 56px; }

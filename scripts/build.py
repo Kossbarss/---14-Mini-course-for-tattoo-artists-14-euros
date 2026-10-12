@@ -317,10 +317,10 @@ def build(t, ua):
   </div>
 </section>
 
-<section class="instructor-wrap" id="instructor">
+<section class="instructor-wrap instructor-wrap--light" id="instructor">
   <div class="container">
     <div class="instructor-section">
-      <img src="{p}assets/logo-watermark.png" class="section-watermark" alt="" aria-hidden="true">
+      <img src="{p}assets/logo-mark-black.png" class="section-watermark" alt="" aria-hidden="true">
       <div class="instructor-layout">
         <div id="instructorCarousel" class="instructor-carousel-mount"></div>
 
