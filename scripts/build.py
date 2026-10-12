@@ -5,9 +5,17 @@
 Так обидві мови завжди залишаються дзеркальними.
 """
 from html import escape
+from hashlib import md5
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+
+
+def ver(rel):
+    """Короткий хеш вмісту файлу — додається як ?v=… щоб телефони не показували стару версію з кешу."""
+    return md5((ROOT / rel).read_bytes()).hexdigest()[:8]
+
+
 SITE = "https://kossbarss.github.io/---14-mini-course-for-tattoo-artists-14-euros"
 
 UA = dict(
@@ -257,7 +265,7 @@ def build(t, ua):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wght@700&display=swap&subset=cyrillic,latin" rel="stylesheet">
-<link rel="stylesheet" href="{p}style.css">
+<link rel="stylesheet" href="{p}style.css?v={ver('style.css')}">
 <script>document.documentElement.classList.remove('no-js')</script>
 <script type="application/ld+json">{{"@context":"https://schema.org","@graph":[{{"@type":"Course","name":"{e(t['title'])}","description":"{e(t['desc'])}","provider":{{"@type":"Organization","name":"VIP tattoo school"}},"offers":{{"@type":"Offer","price":"14","priceCurrency":"EUR"}}}},{{"@type":"FAQPage","mainEntity":[{faq_ld}]}}]}}</script>
 </head>
@@ -410,9 +418,9 @@ def build(t, ua):
 </div>
 
 <script>window.VIP_TATTOO_ASSET_BASE = "{p}assets/";</script>
-<script src="{p}vendor/instructor-carousel.js" defer></script>
-<script src="{p}config.js"></script>
-<script src="{p}script.js"></script>
+<script src="{p}vendor/instructor-carousel.js?v={ver('vendor/instructor-carousel.js')}" defer></script>
+<script src="{p}config.js?v={ver('config.js')}"></script>
+<script src="{p}script.js?v={ver('script.js')}"></script>
 </body>
 </html>
 """
