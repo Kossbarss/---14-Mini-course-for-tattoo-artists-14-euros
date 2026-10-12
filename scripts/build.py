@@ -53,15 +53,19 @@ UA = dict(
         ("Калькулятор вартості тату", "Шаблон для розрахунку ціни роботи, щоб не працювати собі в збиток."),
         ("Ескізи й трафарети для перших робіт", "Готові ескізи в різних стилях, з якими можна практикувати одразу."),
     ],
-    author_eyebrow="Хто автор", author_title="Привіт, я <em>Вікторія Поникарова</em>",
-    author_name="Тату-майстриня, засновниця студії Sarna Tattoo і VIP tattoo school",
-    author_p="Я не теоретик, а практикуюча майстриня, яка щодня працює з клієнтами й бачить, які помилки роблять новачки. У мене вища художня освіта. Перш ніж знайти свій стиль, я пробувала різні, тому допоможу тобі знайти сильну сторону й опанувати технічні навички.",
-    author_list=[
-        "Переможниця Personal Branding Awards Poland Ukraine",
-        "Обличчя обкладинки Bomond VIP",
-        "300+ випускників, які вже працюють з клієнтами",
-        "Досвід навчання новачків у 12 студіях-партнерах в Україні та Європі",
+    instr_badge="Привіт, я Вікторія Поникарова",
+    instr_h2="Чому моя методика працює, навіть якщо ти тримаєш машинку вперше",
+    instr_p="Я не теоретик, а практикуюча майстриня, яка щодня працює з клієнтами і бачить, які помилки роблять новачки. У мене вища художня освіта і величезна насмотреність — перш ніж знайти свій стиль, я спробувала працювати в різних стилях, тому точно допоможу тобі знайти свою сильну сторону і опанувати всі технічні навички.",
+    instr_list=[
+        "Засновниця студії <strong>«Sarna Tattoo»</strong>, переможниця Personal Branding Awards Poland Ukraine та обличчя обкладинки Bomond VIP",
+        "<strong>300+ випускників</strong> навчання, які вже працюють з клієнтами",
+        "Учні VIP tattoo виконали <strong>2000+ робіт</strong> лише за 2025 рік",
+        "Досвід навчання новачків у <strong>12 студіях-партнерах</strong> по Україні та Європі",
     ],
+    instr_stats=[("instructorStatMakeup", "80%", "робіт з перманентного макіяжу — без жодної корекції"),
+                 ("instructorStatGraduates", "300+", "випускників, які вже працюють з клієнтами"),
+                 ("instructorStatWorks", "2000+", "робіт виконали учні тату-навчання за 2025 рік"),
+                 ("instructorStatPartners", "12", "студій-партнерів визнають сертифікат навчання")],
     res_eyebrow="Результати", res_title="Роботи й учні <em>VIP tattoo school</em>",
     res_lead="Учні школи з різних країн. Усі почали з нуля.",
     how_eyebrow="Як проходить навчання", how_title="4 кроки до <em>перших ліній</em>",
@@ -96,7 +100,7 @@ UA = dict(
     f_more="Школа", f_site="Повний курс VIP tattoo school",
     legal="Firma Виктория Поникарова · NIP 6492327660. Курс має освітній та інформаційний характер. Результат залежить від твоєї практики й активності, тому ми не гарантуємо конкретного доходу чи кількості клієнтів. Навчання доступне з 18 років.",
     copyright="© 2026 VIP tattoo school. Усі права захищені.",
-    alt_hero="Вікторія Поникарова з тату-машинкою", alt_author="Вікторія Поникарова на обкладинці Bomond VIP",
+    alt_hero="Вікторія Поникарова з тату-машинкою",
     alt_case="Учень VIP tattoo school",
 )
 
@@ -143,15 +147,19 @@ RU = dict(
         ("Калькулятор стоимости тату", "Шаблон для расчёта цены работы, чтобы не работать себе в убыток."),
         ("Эскизы и трафареты для первых работ", "Готовые эскизы в разных стилях, с которыми можно практиковаться сразу."),
     ],
-    author_eyebrow="Кто автор", author_title="Привет, я <em>Виктория Поникарова</em>",
-    author_name="Тату-мастер, основательница студии Sarna Tattoo и VIP tattoo school",
-    author_p="Я не теоретик, а практикующий мастер, который каждый день работает с клиентами и видит, какие ошибки делают новички. У меня высшее художественное образование. Прежде чем найти свой стиль, я пробовала разные, поэтому помогу тебе найти сильную сторону и освоить технические навыки.",
-    author_list=[
-        "Победительница Personal Branding Awards Poland Ukraine",
-        "Лицо обложки Bomond VIP",
-        "300+ выпускников, которые уже работают с клиентами",
-        "Опыт обучения новичков в 12 студиях-партнёрах в Украине и Европе",
+    instr_badge="Привет, я Виктория Поникарова",
+    instr_h2="Почему моя методика работает, даже если ты держишь машинку первый раз",
+    instr_p="Я не теоретик, а практикующий мастер, который каждый день работает с клиентами и видит, какие ошибки совершают новички. У меня высшее художественное образование и огромная насмотренность — прежде чем найти свой стиль, я попробовала работать в разных стилях, поэтому точно помогу тебе найти свою сильную сторону и овладеть всеми техническими навыками.",
+    instr_list=[
+        "Основательница студии <strong>«Sarna Tattoo»</strong>, победительница Personal Branding Awards Poland Ukraine и лицо обложки Bomond VIP",
+        "<strong>300+ выпускников</strong> обучения, которые уже работают с клиентами",
+        "Ученики VIP tattoo выполнили <strong>2000+ работ</strong> только за 2025 год",
+        "Опыт обучения новичков в <strong>12 студиях-партнёрах</strong> по Украине и Европе",
     ],
+    instr_stats=[("instructorStatMakeup", "80%", "работ по перманентному макияжу — без единой коррекции"),
+                 ("instructorStatGraduates", "300+", "выпускников, которые уже работают с клиентами"),
+                 ("instructorStatWorks", "2000+", "работ выполнили ученики тату-обучения за 2025 год"),
+                 ("instructorStatPartners", "12", "студий-партнёров признают сертификат обучения")],
     res_eyebrow="Результаты", res_title="Работы и ученики <em>VIP tattoo school</em>",
     res_lead="Ученики школы из разных стран. Все начинали с нуля.",
     how_eyebrow="Как проходит обучение", how_title="4 шага к <em>первым линиям</em>",
@@ -186,7 +194,7 @@ RU = dict(
     f_more="Школа", f_site="Полный курс VIP tattoo school",
     legal="Firma Виктория Поникарова · NIP 6492327660. Курс носит образовательный и информационный характер. Результат зависит от твоей практики и активности, поэтому мы не гарантируем конкретного дохода или количества клиентов. Обучение доступно с 18 лет.",
     copyright="© 2026 VIP tattoo school. Все права защищены.",
-    alt_hero="Виктория Поникарова с тату-машинкой", alt_author="Виктория Поникарова на обложке Bomond VIP",
+    alt_hero="Виктория Поникарова с тату-машинкой",
     alt_case="Ученик VIP tattoo school",
 )
 
@@ -220,7 +228,8 @@ def build(t, ua):
         f'<figure class="reveal"><img src="{p}assets/{c}.jpg" alt="{t["alt_case"]}" loading="lazy" width="1000" height="1333"></figure>'
         for c in CASES)
     faq = "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in t["faq"])
-    author_list = li(t["author_list"])
+    instr_list = "".join(f'<li><span class="check">✓</span><span>{x}</span></li>' for x in t["instr_list"])
+    instr_stats = "".join(f'<div class="stat-item"><div id="{i}" class="stat-value">{v}</div><div class="stat-label">{l}</div></div>' for i, v, l in t["instr_stats"])
     cta = lambda cls="": f'<a class="btn {cls}" data-cta href="#">{t["cta"]}</a>'
 
     faq_ld = ",".join(
@@ -308,15 +317,24 @@ def build(t, ua):
   </div>
 </section>
 
-<section>
-  <div class="container author">
-    <div class="photo reveal"><img src="{p}assets/instructor-bomond-cover.jpg" alt="{t['alt_author']}" loading="lazy" width="1000" height="1250"></div>
-    <div class="reveal">
-      <span class="eyebrow">{t['author_eyebrow']}</span>
-      <h2 class="title">{t['author_title']}</h2>
-      <p class="name">{t['author_name']}</p>
-      <p class="lead">{t['author_p']}</p>
-      <ul>{author_list}</ul>
+<section class="instructor-wrap" id="instructor">
+  <div class="container">
+    <div class="instructor-section">
+      <img src="{p}assets/logo-watermark.png" class="section-watermark" alt="" aria-hidden="true">
+      <div class="instructor-layout">
+        <div id="instructorCarousel" class="instructor-carousel-mount"></div>
+
+        <div class="instructor-identity">
+          <span class="instructor-name-badge">{t['instr_badge']}</span>
+        </div>
+
+        <div class="instructor-copy">
+          <h2 class="title">{t['instr_h2']}</h2>
+          <p class="instructor-text">{t['instr_p']}</p>
+          <ul class="instructor-checklist">{instr_list}</ul>
+          <div class="stats-row">{instr_stats}</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -391,6 +409,8 @@ def build(t, ua):
   <a class="btn" data-cta href="#">{t['cta']}</a>
 </div>
 
+<script>window.VIP_TATTOO_ASSET_BASE = "{p}assets/";</script>
+<script src="{p}vendor/instructor-carousel.js" defer></script>
 <script src="{p}config.js"></script>
 <script src="{p}script.js"></script>
 </body>

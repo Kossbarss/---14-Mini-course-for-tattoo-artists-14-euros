@@ -79,15 +79,24 @@
   </div>
 </section>
 
-<section>
-  <div class="container author">
-    <div class="photo reveal"><img src="assets/instructor-bomond-cover.jpg" alt="Вікторія Поникарова на обкладинці Bomond VIP" loading="lazy" width="1000" height="1250"></div>
-    <div class="reveal">
-      <span class="eyebrow">Хто автор</span>
-      <h2 class="title">Привіт, я <em>Вікторія Поникарова</em></h2>
-      <p class="name">Тату-майстриня, засновниця студії Sarna Tattoo і VIP tattoo school</p>
-      <p class="lead">Я не теоретик, а практикуюча майстриня, яка щодня працює з клієнтами й бачить, які помилки роблять новачки. У мене вища художня освіта. Перш ніж знайти свій стиль, я пробувала різні, тому допоможу тобі знайти сильну сторону й опанувати технічні навички.</p>
-      <ul><li>Переможниця Personal Branding Awards Poland Ukraine</li><li>Обличчя обкладинки Bomond VIP</li><li>300+ випускників, які вже працюють з клієнтами</li><li>Досвід навчання новачків у 12 студіях-партнерах в Україні та Європі</li></ul>
+<section class="instructor-wrap" id="instructor">
+  <div class="container">
+    <div class="instructor-section">
+      <img src="assets/logo-watermark.png" class="section-watermark" alt="" aria-hidden="true">
+      <div class="instructor-layout">
+        <div id="instructorCarousel" class="instructor-carousel-mount"></div>
+
+        <div class="instructor-identity">
+          <span class="instructor-name-badge">Привіт, я Вікторія Поникарова</span>
+        </div>
+
+        <div class="instructor-copy">
+          <h2 class="title">Чому моя методика працює, навіть якщо ти тримаєш машинку вперше</h2>
+          <p class="instructor-text">Я не теоретик, а практикуюча майстриня, яка щодня працює з клієнтами і бачить, які помилки роблять новачки. У мене вища художня освіта і величезна насмотреність — перш ніж знайти свій стиль, я спробувала працювати в різних стилях, тому точно допоможу тобі знайти свою сильну сторону і опанувати всі технічні навички.</p>
+          <ul class="instructor-checklist"><li><span class="check">✓</span><span>Засновниця студії <strong>«Sarna Tattoo»</strong>, переможниця Personal Branding Awards Poland Ukraine та обличчя обкладинки Bomond VIP</span></li><li><span class="check">✓</span><span><strong>300+ випускників</strong> навчання, які вже працюють з клієнтами</span></li><li><span class="check">✓</span><span>Учні VIP tattoo виконали <strong>2000+ робіт</strong> лише за 2025 рік</span></li><li><span class="check">✓</span><span>Досвід навчання новачків у <strong>12 студіях-партнерах</strong> по Україні та Європі</span></li></ul>
+          <div class="stats-row"><div class="stat-item"><div id="instructorStatMakeup" class="stat-value">80%</div><div class="stat-label">робіт з перманентного макіяжу — без жодної корекції</div></div><div class="stat-item"><div id="instructorStatGraduates" class="stat-value">300+</div><div class="stat-label">випускників, які вже працюють з клієнтами</div></div><div class="stat-item"><div id="instructorStatWorks" class="stat-value">2000+</div><div class="stat-label">робіт виконали учні тату-навчання за 2025 рік</div></div><div class="stat-item"><div id="instructorStatPartners" class="stat-value">12</div><div class="stat-label">студій-партнерів визнають сертифікат навчання</div></div></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -162,6 +171,8 @@
   <a class="btn" data-cta href="#">Забрати за 14 €</a>
 </div>
 
+<script>window.VIP_TATTOO_ASSET_BASE = "assets/";</script>
+<script src="vendor/instructor-carousel.js" defer></script>
 <script src="config.js"></script>
 <script src="script.js"></script>
 </body>
