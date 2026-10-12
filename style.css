@@ -223,6 +223,8 @@ section { padding: 72px 0; }
 /* Фінальний CTA */
 .final { text-align: center; }
 .final .price-row { justify-content: center; }
+.final .lead { margin-inline: auto; }
+.final .price-note { text-align: center; }
 
 /* Футер */
 .footer { background: #0b0807; color: rgba(255, 253, 250, .65); padding: 44px 0 36px; font-size: 14px; }
