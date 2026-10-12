@@ -241,11 +241,212 @@ section { padding: 72px 0; }
 .instructor-carousel-mount .arrow-buttons { display: flex; justify-content: center; gap: 12px; padding-top: 18px; }
 .instructor-carousel-mount .arrow-button { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background-color .3s; border: none; }
 
-/* Галерея */
-.gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-.gallery figure { margin: 0; border-radius: 16px; overflow: hidden; aspect-ratio: 3 / 4; background: var(--ink); }
-.gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
-.gallery figure:hover img { transform: scale(1.05); }
+/* Результати: клон блоку «Кейси учнів» з плагіна VIP Tattoo — 3D-карусель фото учнів
+   (vendor/card-fan-carousel.js + .css, монтується в #caseFanLayout) і ряд аватарів-учнів. */
+.case-fan-wrap { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.case-fan-cta { margin-top: 44px; display: flex; flex-direction: column; align-items: center; gap: 28px; }
+.case-fan-cta .btn { max-width: 420px; }
+@media (min-width: 1024px) {
+  #caseFanLayout[data-case-carousel-3d="true"] .case-carousel-dots { margin-top: -1.78125rem !important; margin-bottom: 1.78125rem !important; }
+}
+@media (max-width: 1023px) {
+  #caseFanLayout[data-case-carousel-3d="true"] .case-carousel-demo { gap: 1.5rem !important; }
+}
+@media (max-width: 767px) {
+  #caseFanLayout[data-case-carousel-3d="true"] .case-carousel-demo { gap: 3.65625rem !important; }
+}
+.cases-head { margin-bottom: clamp(2.75rem, 4vw, 4rem); }
+@media (max-width: 1023px) { .cases-head { margin-bottom: clamp(3rem, 6vw, 4rem); } }
+@media (max-width: 767px) { .cases-head { margin-bottom: clamp(4.125rem, 13.5vw, 5.25rem); } }
+.avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.avatar-row .avatars {
+  display: flex;
+}
+
+.avatar-row .avatar {
+  display: block;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 3px solid var(--paper-alt);
+  background: linear-gradient(135deg, var(--gold-light), var(--blood));
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.avatar-tip:nth-child(1) .avatar { background-image: url('assets/avatar-1.jpg'); }
+.avatar-tip:nth-child(2) .avatar { background-image: url('assets/avatar-2.jpg'); }
+.avatar-tip:nth-child(3) .avatar { background-image: url('assets/avatar-3.jpg'); }
+.avatar-tip:nth-child(4) .avatar { background-image: url('assets/avatar-4.jpg'); }
+.avatar-tip:nth-child(5) .avatar { background-image: url('assets/avatar-5.jpg'); }
+
+.avatar-row .count {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+}
+
+/* ---------- Avatar name/city bubble. Visibility is driven only by
+   .is-active (auto-cycled on a timer in case-carousel-entry.tsx, or set
+   directly on click in site-interactions.js) -- no separate :hover/
+   :focus-visible trigger, so there's only ever one path turning a bubble
+   on and no chance of two bubbles showing at once. ---------- */
+.avatar-tip {
+  position: relative;
+  margin-left: -14px;
+  /* Scroll-in reveal: opacity only (not transform), so it never fights
+     the always-on float animation below -- both target the same element,
+     and animations win over transitions on a shared property, which
+     would silently swallow a transform-based entrance. .is-visible is
+     added once by an IntersectionObserver in case-carousel-entry.tsx. */
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+  transition-delay: var(--reveal-delay, 0s);
+  /* gentle idle float so the row feels alive at rest — transform-only,
+     so it's pure GPU compositing (no repaint), same reasoning as the
+     case-fan border fix earlier */
+  animation: avatar-float 3.6s ease-in-out infinite;
+}
+
+.avatar-tip.is-visible {
+  opacity: 1;
+}
+
+.avatar-tip:first-child {
+  margin-left: 0;
+}
+
+.avatar-tip:nth-child(1) { animation-delay: 0s; }
+.avatar-tip:nth-child(2) { animation-delay: 0.35s; }
+.avatar-tip:nth-child(3) { animation-delay: 0.7s; }
+.avatar-tip:nth-child(4) { animation-delay: 1.05s; }
+.avatar-tip:nth-child(5) { animation-delay: 1.4s; }
+
+@keyframes avatar-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .avatar-tip {
+    animation: none;
+    transition: none;
+    opacity: 1;
+  }
+}
+
+.avatar-tip.is-active .avatar {
+  transform: scale(1.1) translateY(-2px);
+  z-index: 30;
+  position: relative;
+}
+
+.avatar-tip-bubble {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 14px);
+  transform: translate(-50%, 8px) scale(0.6) rotate(var(--tip-rot, 0deg));
+  transform-origin: bottom center;
+  /* same card treatment as the 14-day cycle cells (.rise-cell): flat
+     dark fill, hairline border, logo watermark tucked in the corner —
+     ties this tooltip into the same visual language site-wide */
+  background: #1c1917;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 9px;
+  padding: 8px 12px 9px;
+  min-width: 136px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: left;
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 40;
+}
+
+.avatar-tip-watermark {
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  width: 60%;
+  max-width: 62px;
+  opacity: 0.32;
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.25));
+  pointer-events: none;
+  user-select: none;
+}
+
+.avatar-tip-name {
+  position: relative;
+  z-index: 2;
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.86rem;
+  line-height: 1.2;
+  color: var(--white);
+}
+
+.avatar-tip-role {
+  position: relative;
+  z-index: 2;
+  display: block;
+  font-family: var(--font-body);
+  text-transform: none;
+  font-size: 0.68rem;
+  line-height: 1.3;
+  color: rgba(250, 246, 239, 0.72);
+  margin-top: 2px;
+}
+
+.avatar-tip.is-active .avatar-tip-bubble {
+  opacity: 1;
+  transform: translate(-50%, 0) scale(1) rotate(var(--tip-rot, 0deg));
+  pointer-events: auto;
+}
+
+@media (max-width: 640px) {
+  /* tap-to-open on touch (no hover), so give the bubble room to wrap
+     instead of the desktop's single-line layout */
+  .avatar-tip-bubble {
+    white-space: normal;
+    width: max-content;
+    max-width: 42vw;
+  }
+
+  .avatar-tip:first-child .avatar-tip-bubble {
+    left: 0;
+    transform: translate(0, 8px) scale(0.6) rotate(var(--tip-rot, 0deg));
+    transform-origin: bottom left;
+  }
+
+  .avatar-tip:first-child.is-active .avatar-tip-bubble {
+    transform: translate(0, 0) scale(1) rotate(var(--tip-rot, 0deg));
+  }
+
+  .avatar-tip:last-child .avatar-tip-bubble {
+    left: auto;
+    right: 0;
+    transform: translate(0, 8px) scale(0.6) rotate(var(--tip-rot, 0deg));
+    transform-origin: bottom right;
+  }
+
+  .avatar-tip:last-child.is-active .avatar-tip-bubble {
+    transform: translate(0, 0) scale(1) rotate(var(--tip-rot, 0deg));
+  }
+}
+
 
 /* Кроки */
 .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: s; }
@@ -323,7 +524,6 @@ section { padding: 72px 0; }
   .hero-chip { left: 12px; }
   .cards-2, .cards-3, .vs { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); row-gap: 22px; }
-  .gallery { grid-template-columns: repeat(2, 1fr); }
   .steps { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
   .day { grid-template-columns: 1fr; gap: 10px; }
   .day-n b { display: inline; font-size: 40px; margin-left: 6px; }
@@ -351,5 +551,5 @@ section { padding: 72px 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
-  .btn, .gallery img { transition: none; }
+  .btn { transition: none; }
 }

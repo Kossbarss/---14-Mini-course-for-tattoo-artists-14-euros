@@ -76,6 +76,7 @@ UA = dict(
                  ("instructorStatPartners", "12", "студій-партнерів визнають сертифікат навчання")],
     res_eyebrow="Результати", res_title="Роботи й учні <em>VIP tattoo school</em>",
     res_lead="Учні школи з різних країн. Усі почали з нуля.",
+    cases_cta="Хочу почати навчання прямо зараз",
     how_eyebrow="Як проходить навчання", how_title="4 кроки до <em>перших ліній</em>",
     steps=[
         ("Оплачуєш за спеціальною ціною", "Stripe: безпечна оплата карткою. Одразу отримуєш доступ у Telegram."),
@@ -170,6 +171,7 @@ RU = dict(
                  ("instructorStatPartners", "12", "студий-партнёров признают сертификат обучения")],
     res_eyebrow="Результаты", res_title="Работы и ученики <em>VIP tattoo school</em>",
     res_lead="Ученики школы из разных стран. Все начинали с нуля.",
+    cases_cta="Хочу начать обучение прямо сейчас",
     how_eyebrow="Как проходит обучение", how_title="4 шага к <em>первым линиям</em>",
     steps=[
         ("Оплачиваешь по специальной цене", "Stripe: безопасная оплата картой. Сразу получаешь доступ в Telegram."),
@@ -206,8 +208,6 @@ RU = dict(
     alt_case="Ученик VIP tattoo school",
 )
 
-CASES = ["case-amira-vancouver", "case-anna-nice", "case-nika-oslo", "case-polina-milan",
-         "case-olya-gdansk", "case-criss-rotterdam", "case-edvard-massachusetts", "case-adam-rotterdam"]
 
 
 def e(s):
@@ -232,9 +232,6 @@ def build(t, ua):
     steps = "".join(f'<div class="step reveal"><h3>{h}</h3><p>{b}</p></div>' for h, b in t["steps"])
     stats = "".join(f"<div><b>{n}</b><span>{l}</span></div>" for n, l in t["stats"])
     tags = "".join(f'<span class="tag">{x}</span>' for x in t["tags"])
-    gallery = "".join(
-        f'<figure class="reveal"><img src="{p}assets/{c}.jpg" alt="{t["alt_case"]}" loading="lazy" width="1000" height="1333"></figure>'
-        for c in CASES)
     faq = "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in t["faq"])
     instr_list = "".join(f'<li><span class="check">✓</span><span>{x}</span></li>' for x in t["instr_list"])
     instr_stats = "".join(f'<div class="stat-item"><div id="{i}" class="stat-value">{v}</div><div class="stat-label">{l}</div></div>' for i, v, l in t["instr_stats"])
@@ -265,6 +262,7 @@ def build(t, ua):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wght@700&display=swap&subset=cyrillic,latin" rel="stylesheet">
+<link rel="stylesheet" href="{p}vendor/card-fan-carousel.css?v={ver('vendor/card-fan-carousel.css')}">
 <link rel="stylesheet" href="{p}style.css?v={ver('style.css')}">
 <script>document.documentElement.classList.remove('no-js')</script>
 <script type="application/ld+json">{{"@context":"https://schema.org","@graph":[{{"@type":"Course","name":"{e(t['title'])}","description":"{e(t['desc'])}","provider":{{"@type":"Organization","name":"VIP tattoo school"}},"offers":{{"@type":"Offer","price":"14","priceCurrency":"EUR"}}}},{{"@type":"FAQPage","mainEntity":[{faq_ld}]}}]}}</script>
@@ -349,8 +347,12 @@ def build(t, ua):
 
 <section class="alt">
   <div class="container">
-    <div class="head center reveal"><span class="eyebrow">{t['res_eyebrow']}</span><h2 class="title">{t['res_title']}</h2><p class="lead">{t['res_lead']}</p></div>
-    <div class="gallery">{gallery}</div>
+    <div class="head center reveal cases-head"><span class="eyebrow">{t['res_eyebrow']}</span><h2 class="title">{t['res_title']}</h2><p class="lead">{t['res_lead']}</p></div>
+    <div class="case-fan-wrap"><div class="case-fan-layout" id="caseFanLayout"></div></div>
+    <div class="case-fan-cta">
+      <div class="avatar-row"><div class="avatars"></div><span class="count">300+</span></div>
+      <a class="btn" data-cta href="#">{t['cases_cta']}</a>
+    </div>
   </div>
 </section>
 
@@ -419,6 +421,7 @@ def build(t, ua):
 
 <script>window.VIP_TATTOO_ASSET_BASE = "{p}assets/";</script>
 <script src="{p}vendor/instructor-carousel.js?v={ver('vendor/instructor-carousel.js')}" defer></script>
+<script src="{p}vendor/card-fan-carousel.js?v={ver('vendor/card-fan-carousel.js')}" defer></script>
 <script src="{p}config.js?v={ver('config.js')}"></script>
 <script src="{p}script.js?v={ver('script.js')}"></script>
 </body>
