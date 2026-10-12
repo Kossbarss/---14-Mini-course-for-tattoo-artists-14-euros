@@ -316,8 +316,8 @@ section { padding: 72px 0; }
   section { padding: 56px 0; }
   .hero { padding-top: 150px; }
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
-  .instructor-layout { grid-template-columns: 1fr; grid-template-areas: "photo" "identity" "copy"; row-gap: 24px; }
-  .instructor-identity { justify-content: center; }
+  .instructor-layout { grid-template-columns: 1fr; grid-template-areas: "identity" "photo" "copy"; row-gap: 24px; }
+  .instructor-identity { justify-content: center; text-align: center; }
   .stats-row { grid-template-columns: repeat(2, 1fr); }
   .hero-photo { max-width: 440px; margin-inline: auto; }
   .hero-chip { left: 12px; }
