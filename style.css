@@ -860,3 +860,6 @@ html.pop-open,body.popup-open{overflow:hidden}
 /* Підсумковий рядок під стрічкою робіт — виділена плашка */
 .works-note{max-width:680px;margin:8px auto 56px;padding:22px 26px;border:1.5px solid var(--lime);border-left-width:6px;border-radius:16px;background:rgba(201,234,60,.08);box-shadow:0 0 34px rgba(201,234,60,.18);font-size:clamp(17px,1.4vw + 12px,22px);line-height:1.45;text-shadow:none;color:var(--text)}
 @media (max-width:520px){.works-note{margin:4px 16px 48px;padding:18px 18px}}
+/* Плашка з іменем на фото: світліша, зелена, напівпрозора */
+.hero-chip{background:rgba(58,98,20,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid rgba(201,234,60,.5);box-shadow:0 0 24px rgba(201,234,60,.16)}
+.hero-chip span{color:rgba(243,245,232,.88)}
