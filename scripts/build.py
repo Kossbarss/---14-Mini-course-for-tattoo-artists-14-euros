@@ -290,7 +290,7 @@ def build(t, ua):
         f'<article class="day reveal"><div class="day-n">{t["day_word"]}<b>{i}</b></div>'
         f'<div><h3>{h}</h3><ul>{li(items)}</ul><p class="outcome">{out}</p></div></article>'
         for i, (h, items, out) in enumerate(t["days"], 1))
-    yt = f'<img class="yt-logo" src="{p}assets/youtube-logo.png" alt="YouTube" width="75" height="24" loading="lazy" decoding="async">'
+    yt = f'<img class="yt-logo" src="{p}assets/youtube-logo.png" alt="YouTube" width="111" height="36" loading="lazy" decoding="async">'
     pains = "".join(f'<div class="card reveal"><h3>{h.replace("{yt}", yt)}</h3><p>{b}</p></div>' for h, b in t["pains"])
     bonuses = "".join(
         f'<div class="card bonus reveal"><div class="n">0{i}</div><div><h3>{h}</h3><p>{b}</p></div></div>'
