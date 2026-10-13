@@ -784,3 +784,24 @@ main > section.final {
 
 /* Непарна остання картка бонусів — на всю ширину */
 .cards-2 > .bonus:last-child:nth-child(odd){grid-column:1/-1}
+
+/* Попап із формою */
+.popup{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(0,0,0,.72);backdrop-filter:blur(4px)}
+.popup[hidden]{display:none}
+html.pop-open{overflow:hidden}
+.popup-box{position:relative;width:100%;max-width:440px;max-height:calc(100vh - 32px);overflow:auto;background:var(--card);border:1px solid var(--lime);border-radius:var(--radius);padding:32px 28px 28px;box-shadow:0 0 60px rgba(201,234,60,.18)}
+.popup-box h2{font-size:24px;line-height:1.2;margin:0 40px 10px 0;color:var(--text)}
+.popup-lead{margin:0 0 20px;font-size:15px;color:var(--text);opacity:.8}
+.popup-x{position:absolute;top:12px;right:12px;width:40px;height:40px;border:0;border-radius:50%;background:transparent;color:var(--text);font-size:28px;line-height:1;cursor:pointer}
+.popup-x:hover{color:var(--lime)}
+.popup form{display:grid;gap:14px}
+.popup label{display:grid;gap:6px;font-size:13px;color:var(--text);opacity:.9}
+.popup input[type=text]{width:100%;padding:13px 14px;font:inherit;font-size:16px;color:var(--text);background:#050505;border:1px solid var(--line);border-radius:10px}
+.popup input[type=text]:focus{outline:2px solid var(--lime);outline-offset:1px}
+.popup .popup-consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.4}
+.popup .popup-consent input{margin-top:2px;accent-color:var(--lime);flex:none}
+.popup .popup-consent a{color:var(--lime);text-decoration:underline}
+.popup .btn{width:100%;justify-content:center;cursor:pointer}
+.popup-status{margin:0;min-height:1.2em;font-size:14px}
+.popup-status.ok{color:var(--lime)}
+.popup-status.err{color:#ff7a7a}

@@ -130,6 +130,9 @@ UA = dict(
     f_about="VIP tattoo school", f_about_p="Онлайн-навчання для тату-майстрів від Вікторії Поникарової.",
     f_contacts="Контакти", f_tg="Telegram Вікторії", f_bot="Telegram-бот", f_ig="Instagram",
     f_more="Школа", f_site="Повний курс VIP tattoo school",
+    pop_title="Залишились питання по курсу?", pop_lead="Залиш контакт, і Вікторія або її команда напише тобі в Telegram та підкаже, чи підійде тобі міні-курс.",
+    pop_name="Ім'я", pop_contact="Telegram (@нік) або телефон", pop_consent='Погоджуюсь з <a href="privacy.html" target="_blank" rel="noopener">політикою конфіденційності</a>',
+    pop_btn="Надіслати", pop_req="Заповни всі поля й підтверди згоду.", pop_ok="Дякуємо! Ми напишемо тобі найближчим часом.", pop_err="Не вдалося надіслати. Спробуй ще раз або напиши нам у Telegram.", pop_close="Закрити", pop_msg="Привіт! Мене звати {name}, мій контакт: {contact}. Маю питання по міні-курсу.",
     f_privacy="Політика конфіденційності", f_offer="Договір оферти",
     legal="Firma Виктория Поникарова · NIP 6492327660. Курс має освітній та інформаційний характер. Результат залежить від твоєї практики й активності, тому ми не гарантуємо конкретного доходу чи кількості клієнтів. Навчання доступне з 18 років.",
     copyright="© 2026 VIP tattoo school. Усі права захищені.",
@@ -249,6 +252,9 @@ RU = dict(
     f_about="VIP tattoo school", f_about_p="Онлайн-обучение для тату-мастеров от Виктории Поникаровой.",
     f_contacts="Контакты", f_tg="Telegram Виктории", f_bot="Telegram-бот", f_ig="Instagram",
     f_more="Школа", f_site="Полный курс VIP tattoo school",
+    pop_title="Остались вопросы по курсу?", pop_lead="Оставь контакт, и Виктория или её команда напишет тебе в Telegram и подскажет, подойдёт ли тебе мини-курс.",
+    pop_name="Имя", pop_contact="Telegram (@ник) или телефон", pop_consent='Согласен(на) с <a href="privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>',
+    pop_btn="Отправить", pop_req="Заполни все поля и подтверди согласие.", pop_ok="Спасибо! Мы напишем тебе в ближайшее время.", pop_err="Не удалось отправить. Попробуй ещё раз или напиши нам в Telegram.", pop_close="Закрыть", pop_msg="Привет! Меня зовут {name}, мой контакт: {contact}. Есть вопрос по мини-курсу.",
     f_privacy="Политика конфиденциальности", f_offer="Договор оферты",
     legal="Firma Виктория Поникарова · NIP 6492327660. Курс носит образовательный и информационный характер. Результат зависит от твоей практики и активности, поэтому мы не гарантируем конкретного дохода или количества клиентов. Обучение доступно с 18 лет.",
     copyright="© 2026 VIP tattoo school. Все права защищены.",
@@ -491,6 +497,21 @@ def build(t, ua):
 <div class="sticky" role="region" aria-label="{e(t['cta'])}">
   <div class="p"><s>{t['old']}</s><b>{t['new']}</b><small>{t['sticky_small']}</small></div>
   <a class="btn" data-cta href="#">{t['cta']}</a>
+</div>
+
+<div class="popup" id="leadPopup" role="dialog" aria-modal="true" aria-labelledby="popTitle" hidden>
+  <div class="popup-box">
+    <button type="button" class="popup-x" data-pop-close aria-label="{t['pop_close']}">×</button>
+    <h2 id="popTitle">{t['pop_title']}</h2>
+    <p class="popup-lead">{t['pop_lead']}</p>
+    <form id="leadForm" novalidate data-msg="{e(t['pop_msg'])}" data-ok="{e(t['pop_ok'])}" data-err="{e(t['pop_err'])}" data-req="{e(t['pop_req'])}">
+      <label>{t['pop_name']}<input type="text" name="name" autocomplete="name" required maxlength="80"></label>
+      <label>{t['pop_contact']}<input type="text" name="contact" autocomplete="tel" required maxlength="80"></label>
+      <label class="popup-consent"><input type="checkbox" name="consent" required><span>{t['pop_consent']}</span></label>
+      <button type="submit" class="btn">{t['pop_btn']}</button>
+      <p class="popup-status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
 </div>
 
 <script>window.VIP_TATTOO_ASSET_BASE = "{p}assets/";</script>

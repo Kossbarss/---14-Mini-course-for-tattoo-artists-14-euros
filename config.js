@@ -6,6 +6,10 @@ window.SITE_CONFIG = {
   // Поки порожньо — кнопки ведуть у Telegram Вікторії (запасний варіант).
   stripeLink: '',
 
+  // Адреса для заявок з попапу (напр. Formspree: https://formspree.io/f/xxxx). Приймає POST JSON {name, contact, lang}.
+  // Поки порожньо — після відправки відкривається Telegram Вікторії з готовим повідомленням.
+  formEndpoint: '',
+
   telegramPersonal: 'https://t.me/+48733341364',
   telegramBot: 'https://t.me/mentor_tatoo_Viktoria_bot',
   instagram: 'https://www.instagram.com/viktoriia_ponikarova',
