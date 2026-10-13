@@ -897,3 +897,7 @@ h1 em, .title em { -webkit-text-fill-color: transparent; background: var(--grad-
 .works-card { background-image: linear-gradient(180deg, var(--brand-card-from) 0%, rgba(255, 216, 136, .14) 62%, rgba(255, 216, 136, .34) 100%); box-shadow: 0 0 24px rgba(255, 216, 136, .14), 0 20px 46px -12px rgba(255, 216, 136, .42); }
 /* Рамка відгуку (Вероніка, Анна…) — така сама підсвітка, як у карток «Практика учнів» */
 #caseFanLayout[data-case-carousel-3d="true"] .case-carousel-detail { background-image: linear-gradient(180deg, var(--brand-card-from) 0%, var(--brand-card-from) 84%, rgba(255, 216, 136, .05) 94%, rgba(255, 216, 136, .11) 100%); border: 1.5px solid var(--lime); border-radius: 18px; box-shadow: 0 0 12px rgba(255, 216, 136, .06), 0 8px 18px -10px rgba(255, 216, 136, .16); }
+/* Підпис «Відгук» ліворуч від бейджа «Верифіковано · Google» */
+.case-carousel-detail .cases-marquee-badge-row { justify-content: space-between; align-items: center; }
+.case-carousel-detail .cases-marquee-badge-row::before { content: "Відгук"; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--lime-2); }
+html[lang^="ru"] .case-carousel-detail .cases-marquee-badge-row::before { content: "Отзыв"; }
