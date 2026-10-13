@@ -546,7 +546,11 @@ section { padding: 72px 0; }
   .steps { grid-template-columns: 1fr; }
   .sticky { gap: 12px; }
   .sticky .btn { width: auto; flex: 1; padding: 14px 16px; }
-  .sticky small { display: none; }
+  /* ціна й підпис «14 днів гарантія…» складаються в один стовпчик ліворуч від кнопки */
+  .sticky .p { display: grid; grid-template-columns: auto auto; justify-content: start; align-items: baseline; column-gap: 8px; row-gap: 2px; flex: none; }
+  .sticky .p b { font-size: 24px; }
+  .sticky small { grid-column: 1 / -1; display: block; font-size: 10.5px; line-height: 1.25; max-width: 120px; }
+  .sticky .btn { font-size: 14px; padding: 14px 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
