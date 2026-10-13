@@ -722,3 +722,13 @@ main > section.final {
 .footer h4 { color: var(--text); }
 .footer a:hover { color: var(--lime); }
 .footer .legal { border-top-color: var(--line); }
+
+/* Бейдж «Верифіковано · Google» — клон елемента з відгуків плагіна (cases-marquee-verified),
+   тепер у рамці картки кейсу. Зелена крапка з пульсацією + підпис + логотип Google. */
+.cases-marquee-badge-row { display: flex; justify-content: flex-end; margin-bottom: 12px; }
+.cases-marquee-verified { display: flex; align-items: center; gap: 4px; padding: 3px 8px; border-radius: 999px; background: rgba(243, 245, 232, .07); }
+.cases-marquee-verified-dot { width: 6px; height: 6px; border-radius: 50%; background: #2ecc71; animation: cases-marquee-verified-pulse 2s ease-in-out infinite; }
+@keyframes cases-marquee-verified-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, .55); } 50% { box-shadow: 0 0 0 4px rgba(46, 204, 113, 0); } }
+.cases-marquee-verified-label { font-size: .62rem; letter-spacing: .01em; color: rgba(243, 245, 232, .6); white-space: nowrap; }
+.cases-marquee-verified svg { flex-shrink: 0; }
+@media (prefers-reduced-motion: reduce) { .cases-marquee-verified-dot { animation: none; } }
