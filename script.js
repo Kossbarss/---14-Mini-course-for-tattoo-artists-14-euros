@@ -157,37 +157,50 @@
     requestAnimationFrame(frame);
   }
 
-  // Свайп по рамці відгуку (палець і миша): рамка стоїть на місці, свайп вліво/вправо перемикає кейс
-  // через стрілки каруселі — тож 3D-галерея з фото й індикатор-крапки змінюються разом із рамкою.
+  // Свайп по рамці відгуку: рамка стоїть на місці, свайп вліво/вправо перемикає кейс по колу.
+  // Перемикання йде тим самим шляхом, що й клік по крапці індикатора (3D-галерея і крапки синхронні).
+  // Дотик — через touch-події (працюють на всіх телефонах), миша — через pointer-події.
   (function () {
-    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var sx = 0, sy = 0, t0 = 0, drag = false, busy = false, pid = null;
-    var find = function () { return d.querySelector('#caseFanLayout .case-carousel-detail'); };
-    var hit = function (t) { return t && t.closest ? t.closest('#caseFanLayout .case-carousel-detail') : null; };
+    var sx = 0, sy = 0, t0 = 0, active = false, last = 0;
+    var detailSel = '#caseFanLayout .case-carousel-detail';
+    var hit = function (t) { return t && t.closest ? t.closest(detailSel) : null; };
+    var tabs = function () { return d.querySelectorAll('#caseFanLayout [role="tab"]'); };
+    var current = function (list) {
+      for (var i = 0; i < list.length; i++) { if (list[i].getAttribute('aria-selected') === 'true') return i; }
+      return -1;
+    };
+    var go = function (dir) {
+      var list = tabs(); if (list.length < 2) return;
+      var cur = current(list); if (cur < 0) cur = 0;
+      var target = (cur + dir + list.length) % list.length;
+      list[target].click();
+    };
+    var begin = function (x, y) { active = true; sx = x; sy = y; t0 = Date.now(); };
+    var end = function (x, y) {
+      if (!active) return; active = false;
+      var dx = x - sx, dy = y - sy;
+      var fast = Math.abs(dx) > 30 && Date.now() - t0 < 300;
+      if ((Math.abs(dx) < 40 && !fast) || Math.abs(dx) < Math.abs(dy) * 1.2) return;
+      var now = Date.now(); if (now - last < 350) return; last = now;
+      go(dx < 0 ? 1 : -1);
+    };
+    // дотик
+    d.addEventListener('touchstart', function (ev) {
+      if (ev.touches.length !== 1 || !hit(ev.target)) { active = false; return; }
+      begin(ev.touches[0].clientX, ev.touches[0].clientY);
+    }, { passive: true });
+    d.addEventListener('touchend', function (ev) {
+      var t = ev.changedTouches && ev.changedTouches[0]; if (t) end(t.clientX, t.clientY);
+    }, { passive: true });
+    d.addEventListener('touchcancel', function () { active = false; }, { passive: true });
+    // миша
     d.addEventListener('pointerdown', function (ev) {
-      if (busy || (ev.pointerType === 'mouse' && ev.button !== 0)) return;
-      if (!hit(ev.target)) return;
-      drag = true; sx = ev.clientX; sy = ev.clientY; t0 = Date.now(); pid = ev.pointerId;
+      if (ev.pointerType !== 'mouse' || ev.button !== 0 || !hit(ev.target)) return;
+      begin(ev.clientX, ev.clientY);
     }, { passive: true });
     d.addEventListener('pointerup', function (ev) {
-      if (!drag || ev.pointerId !== pid) return;
-      drag = false;
-      var dx = ev.clientX - sx, dy = ev.clientY - sy;
-      var fast = Math.abs(dx) > 30 && Date.now() - t0 < 250;
-      if ((Math.abs(dx) < 50 && !fast) || Math.abs(dx) < Math.abs(dy) * 1.2) return;
-      var arrows = d.querySelectorAll('#caseFanLayout .case-carousel-dots-arrow');
-      if (arrows.length < 2) return;
-      busy = true;
-      arrows[dx < 0 ? 1 : 0].click();
-      var el = find();
-      if (el && !reduce) {
-        // рамка не рухається, лише коротко «проявляється» з новим відгуком
-        el.style.transition = 'none'; el.style.opacity = '0.25'; void el.offsetWidth;
-        el.style.transition = 'opacity .25s ease'; el.style.opacity = '1';
-        setTimeout(function () { el.style.transition = ''; el.style.opacity = ''; busy = false; }, 270);
-      } else { busy = false; }
+      if (ev.pointerType === 'mouse') end(ev.clientX, ev.clientY);
     }, { passive: true });
-    d.addEventListener('pointercancel', function () { drag = false; }, { passive: true });
   })();
 
   // Поява при скролі.
