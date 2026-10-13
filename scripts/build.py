@@ -361,11 +361,6 @@ def build(t, ua):
   </div>
 </section>
 
-<div class="promo-bar"><div class="container"><div class="promo-bar-in">
-  <div><b>{t['tm_title']}</b><span>{t['tm_after']}</span></div>
-  <div class="promo-time" aria-live="off"><span data-timer="h">08</span>:<span data-timer="m">00</span>:<span data-timer="s">00</span></div>
-</div></div></div>
-
 <div class="stats"><div class="container stats-grid">{stats}</div></div>
 
 <section class="pain">
@@ -388,6 +383,11 @@ def build(t, ua):
     <div class="cards cards-3">{bases}</div>
   </div>
 </section>
+
+<div class="promo-bar"><div class="container"><div class="promo-bar-in">
+  <div><b>{t['tm_title']}</b><span>{t['tm_after']}</span></div>
+  <div class="promo-time" aria-live="off"><span data-timer="h">08</span>:<span data-timer="m">00</span>:<span data-timer="s">00</span></div>
+</div></div></div>
 
 <section class="alt" id="program">
   <div class="container">
