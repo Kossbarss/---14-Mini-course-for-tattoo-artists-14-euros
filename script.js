@@ -111,7 +111,7 @@
     var end = fixedEnd;
     if (isNaN(end)) {
       try { end = parseInt(localStorage.getItem('promoEnd'), 10); } catch (e) {}
-      if (!end || end < Date.now()) {
+      if (!end || end < Date.now() || end > Date.now() + span) {
         end = Date.now() + span;
         try { localStorage.setItem('promoEnd', String(end)); } catch (e) {}
       }
@@ -145,8 +145,8 @@
       drag = true; startX = ev.clientX; startOff = x; wt.classList.add('is-dragging'); wt.setPointerCapture(ev.pointerId);
     });
     wt.addEventListener('pointermove', function (ev) { if (drag) { x = startOff - (ev.clientX - startX); apply(); } });
-    var end = function () { drag = false; wt.classList.remove('is-dragging'); };
-    wt.addEventListener('pointerup', end); wt.addEventListener('pointercancel', end);
+    var endDrag = function () { drag = false; wt.classList.remove('is-dragging'); };
+    wt.addEventListener('pointerup', endDrag); wt.addEventListener('pointercancel', endDrag);
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(wm);
     }
