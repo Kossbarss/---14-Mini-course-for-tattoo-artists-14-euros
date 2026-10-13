@@ -857,3 +857,6 @@ html.pop-open,body.popup-open{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.works-marquee{overflow-x:auto}.works-track{transform:none!important}}
 .works-card figcaption{margin-top:10px;text-align:center;font-size:14px;font-weight:700;color:var(--text);letter-spacing:.2px}
 .works-note{max-width:640px;margin:0 auto;text-align:center;font-size:var(--fs-text);line-height:1.5;font-weight:700;color:var(--lime);text-shadow:0 0 22px var(--glow)}
+/* Підсумковий рядок під стрічкою робіт — виділена плашка */
+.works-note{max-width:680px;margin:8px auto 56px;padding:22px 26px;border:1.5px solid var(--lime);border-left-width:6px;border-radius:16px;background:rgba(201,234,60,.08);box-shadow:0 0 34px rgba(201,234,60,.18);font-size:clamp(17px,1.4vw + 12px,22px);line-height:1.45;text-shadow:none;color:var(--text)}
+@media (max-width:520px){.works-note{margin:4px 16px 48px;padding:18px 18px}}
