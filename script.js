@@ -157,28 +157,6 @@
     requestAnimationFrame(frame);
   }
 
-  // Свайп по рамці відгуку (палець або миша): вліво — наступний кейс, вправо — попередній.
-  // Працює через ті самі стрілки каруселі, тож індикатор і 3D-галерея синхронізуються.
-  (function () {
-    var sx = 0, sy = 0, st = 0, tracking = false;
-    var inDetail = function (t) { return t && t.closest && t.closest('#caseFanLayout .case-carousel-detail'); };
-    d.addEventListener('pointerdown', function (ev) {
-      if (ev.pointerType === 'mouse' && ev.button !== 0) return;
-      if (!inDetail(ev.target)) { tracking = false; return; }
-      tracking = true; sx = ev.clientX; sy = ev.clientY; st = Date.now();
-    }, { passive: true });
-    d.addEventListener('pointerup', function (ev) {
-      if (!tracking) return;
-      tracking = false;
-      var dx = ev.clientX - sx, dy = ev.clientY - sy;
-      if (Date.now() - st > 800 || Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy) * 1.4) return;
-      var arrows = d.querySelectorAll('#caseFanLayout .case-carousel-dots-arrow');
-      if (arrows.length < 2) return;
-      arrows[dx < 0 ? 1 : 0].click();
-    }, { passive: true });
-    d.addEventListener('pointercancel', function () { tracking = false; }, { passive: true });
-  })();
-
   // Поява при скролі.
   var items = d.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
