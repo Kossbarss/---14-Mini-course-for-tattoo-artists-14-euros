@@ -294,7 +294,7 @@ def build(t, ua):
     bonuses = "".join(
         f'<div class="card bonus reveal"><div class="n">0{i}</div><div><h3>{h}</h3><p>{b}</p></div></div>'
         for i, (h, b) in enumerate(t["bonuses"], 1))
-    works = "".join(f'<figure class="works-card"><img src="{p}assets/work-{n}.jpg" alt="{e(t["works_alt"])} {n}" width="800" height="1000" loading="lazy" decoding="async" draggable="false"><figcaption>{t["works_cap"]} {n}</figcaption></figure>' for n in range(1, WORKS + 1))
+    works = "".join(f'<figure class="works-card"><span class="works-img"><img src="{p}assets/work-{n}.jpg" alt="{e(t["works_alt"])} {n}" width="800" height="1000" loading="lazy" decoding="async" draggable="false"></span><figcaption>{t["works_cap"]} {n}</figcaption></figure>' for n in range(1, WORKS + 1))
     bases = "".join(f'<div class="card base reveal"><span class="base-dot" aria-hidden="true"></span><h3>{h}</h3><p>{d}</p></div>' for h, d in t["bases"])
     sols = "".join(f'<div class="card sol reveal"><div class="num">0{i}</div><h3>{h}</h3><p>{d}</p></div>' for i, (h, d) in enumerate(t["sols"], 1))
     gets = "".join(f'<div class="card get reveal"><span class="get-ok" aria-hidden="true">✓</span><h3>{x}</h3></div>' for x in t["gets"])

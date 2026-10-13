@@ -860,3 +860,6 @@ html.pop-open,body.popup-open{overflow:hidden}
 /* Підсумковий рядок під стрічкою робіт — виділена плашка */
 .works-note{max-width:680px;margin:8px auto 56px;padding:22px 26px;border:1.5px solid var(--lime);border-left-width:6px;border-radius:16px;background:rgba(201,234,60,.08);box-shadow:0 0 34px rgba(201,234,60,.18);font-size:clamp(17px,1.4vw + 12px,22px);line-height:1.45;text-shadow:none;color:var(--text)}
 @media (max-width:520px){.works-note{margin:4px 16px 48px;padding:18px 18px}}
+/* Те саме легке зелене затемнення низу, що й на фото в hero */
+.works-img{display:block;position:relative;overflow:hidden;border-radius:10px}
+.works-img::after{content:"";position:absolute;left:0;right:0;bottom:0;height:38%;pointer-events:none;background:linear-gradient(180deg,rgba(46,82,12,0) 0%,rgba(46,82,12,.16) 55%,rgba(46,82,12,.34) 100%)}
