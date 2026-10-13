@@ -157,6 +157,59 @@
     requestAnimationFrame(frame);
   }
 
+  // Свайп по рамці відгуку (палець і миша): рамка їде за жестом, а на відпусканні перемикає кейс
+  // через стрілки каруселі — тож 3D-галерея з фото й індикатор-крапки змінюються разом із рамкою.
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var el = null, sx = 0, sy = 0, dx = 0, t0 = 0, drag = false, busy = false, pid = null;
+    var find = function () { return d.querySelector('#caseFanLayout .case-carousel-detail'); };
+    var hit = function (t) { return t && t.closest ? t.closest('#caseFanLayout .case-carousel-detail') : null; };
+    var set = function (x, o, anim) {
+      if (!el) return;
+      el.style.transition = anim ? 'transform .2s ease, opacity .2s ease' : 'none';
+      el.style.transform = 'translate3d(' + x + 'px,0,0)';
+      el.style.opacity = o;
+    };
+    var reset = function () { set(0, 1, true); setTimeout(function () { if (el) { el.style.transition = ''; el.style.transform = ''; el.style.opacity = ''; } }, 220); };
+    d.addEventListener('pointerdown', function (ev) {
+      if (busy || (ev.pointerType === 'mouse' && ev.button !== 0)) return;
+      var h = hit(ev.target); if (!h) return;
+      el = h; drag = true; dx = 0; sx = ev.clientX; sy = ev.clientY; t0 = Date.now(); pid = ev.pointerId;
+    }, { passive: true });
+    d.addEventListener('pointermove', function (ev) {
+      if (!drag || ev.pointerId !== pid) return;
+      dx = ev.clientX - sx;
+      if (Math.abs(ev.clientY - sy) > Math.abs(dx) * 1.2 && Math.abs(dx) < 12) return;
+      set(dx * 0.7, Math.max(0.35, 1 - Math.abs(dx) / 420), false);
+    }, { passive: true });
+    var finish = function (ev) {
+      if (!drag || (ev && ev.pointerId !== pid)) return;
+      drag = false;
+      var dy = ev ? ev.clientY - sy : 0;
+      var fast = Math.abs(dx) > 30 && Date.now() - t0 < 250;
+      if ((Math.abs(dx) < 60 && !fast) || Math.abs(dx) < Math.abs(dy) * 1.2) { reset(); return; }
+      var arrows = d.querySelectorAll('#caseFanLayout .case-carousel-dots-arrow');
+      if (arrows.length < 2) { reset(); return; }
+      var dir = dx < 0 ? 1 : -1; busy = true;
+      var swap = function () {
+        arrows[dir === 1 ? 1 : 0].click();
+        setTimeout(function () {
+          el = find();
+          if (!el || reduce) { busy = false; return; }
+          set(dir * 50, 0, false);
+          void el.offsetWidth;
+          set(0, 1, true);
+          setTimeout(function () { if (el) { el.style.transition = ''; el.style.transform = ''; el.style.opacity = ''; } busy = false; }, 230);
+        }, 30);
+      };
+      if (reduce) { swap(); return; }
+      set(-dir * 60, 0, true);
+      setTimeout(swap, 190);
+    };
+    d.addEventListener('pointerup', finish, { passive: true });
+    d.addEventListener('pointercancel', function (ev) { if (drag && ev.pointerId === pid) { drag = false; reset(); } }, { passive: true });
+  })();
+
   // Поява при скролі.
   var items = d.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
