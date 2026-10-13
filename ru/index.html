@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wght@700&display=swap&subset=cyrillic,latin" rel="stylesheet">
 <link rel="stylesheet" href="../vendor/card-fan-carousel.css?v=44cf10e5">
-<link rel="stylesheet" href="../style.css?v=6416cba0">
+<link rel="stylesheet" href="../style.css?v=fa95f9fa">
 <script>document.documentElement.classList.remove('no-js')</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Course","name":"Тату Старт: первые линии за 5 дней — Виктория Поникарова","description":"Онлайн-мини-курс от Виктории Поникаровой, основательницы VIP tattoo school: за 5 дней сделаешь первые линии на искусственной коже и поймёшь, готов ли к первому клиенту. 14 € вместо 99 €.","provider":{"@type":"Organization","name":"VIP tattoo school"},"offers":{"@type":"Offer","price":"14","priceCurrency":"EUR"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"А вдруг у меня не получится и я пойму, что это не моё?","acceptedAnswer":{"@type":"Answer","text":"Именно для этого и существует мини-курс: понять, подходит ли тебе эта сфера, без больших вложений. 14 € и 5 дней. Плюс есть 14-дневная гарантия возврата средств."}},{"@type":"Question","name":"Я не умею рисовать. Это проблема?","acceptedAnswer":{"@type":"Answer","text":"Нет. Навыки рисования не обязательны, хотя и приветствуются. Тату — это техника и практика, а не только талант: постановка руки, контроль глубины, равномерное движение отрабатываются."}},{"@type":"Question","name":"Нужно покупать оборудование до начала?","acceptedAnswer":{"@type":"Answer","text":"Нет. В первом уроке ты получишь список оборудования для старта. Базовый набор для обучения на искусственной коже стоит от 60–80 €."}},{"@type":"Question","name":"Сколько времени нужно в день?","acceptedAnswer":{"@type":"Answer","text":"Ориентировочно 30–60 минут в день в течение 5 дней. Новый урок открывается каждый день."}},{"@type":"Question","name":"Я боюсь крови. Смогу ли я работать в этой сфере?","acceptedAnswer":{"@type":"Answer","text":"При правильной технике крови практически не видно. Все упражнения мини-курса выполняются на искусственной коже."}},{"@type":"Question","name":"А если куплю курс, но не пойму, как работать с машинкой?","acceptedAnswer":{"@type":"Answer","text":"Уроки построены шаг за шагом: от того, как держать машинку, до первых линий на искусственной коже, и каждый шаг показан на видео. Если что-то не получается, ты можешь отправить задание и получить обратную связь от Виктории. А если курс не подойдёт, есть 14-дневная гарантия возврата средств."}},{"@type":"Question","name":"Нужен ли ноутбук?","acceptedAnswer":{"@type":"Answer","text":"Нет, достаточно смартфона: обучение проходит через Telegram, и смотреть уроки и отправлять задания удобно с телефона."}},{"@type":"Question","name":"Есть ли возрастные ограничения?","acceptedAnswer":{"@type":"Answer","text":"Обучение доступно с 18 лет — это стандартное требование для работы в тату-индустрии."}},{"@type":"Question","name":"После мини-курса я буду готов работать с клиентами?","acceptedAnswer":{"@type":"Answer","text":"У тебя будет правильная база, понимание принципов и чёткий план развития. Для работы с реальными клиентами нужна дополнительная практика, но ты будешь знать, что именно отрабатывать."}}]}]}</script>
 </head>
@@ -199,25 +199,26 @@
   <a class="btn" data-cta href="#">Забрать за 14 €</a>
 </div>
 
-<div class="popup" id="leadPopup" role="dialog" aria-modal="true" aria-labelledby="popTitle" hidden>
-  <div class="popup-box">
-    <button type="button" class="popup-x" data-pop-close aria-label="Закрыть">×</button>
-    <h2 id="popTitle">Остались вопросы по курсу?</h2>
-    <p class="popup-lead">Оставь контакт, и Виктория или её команда напишет тебе в Telegram и подскажет, подойдёт ли тебе мини-курс.</p>
-    <form id="leadForm" novalidate data-msg="Привет! Меня зовут {name}, мой контакт: {contact}. Есть вопрос по мини-курсу." data-ok="Спасибо! Мы напишем тебе в ближайшее время." data-err="Не удалось отправить. Попробуй ещё раз или напиши нам в Telegram." data-req="Заполни все поля и подтверди согласие.">
-      <label>Имя<input type="text" name="name" autocomplete="name" required maxlength="80"></label>
-      <label>Telegram (@ник) или телефон<input type="text" name="contact" autocomplete="tel" required maxlength="80"></label>
-      <label class="popup-consent"><input type="checkbox" name="consent" required><span>Согласен(на) с <a href="privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a></span></label>
-      <button type="submit" class="btn">Отправить</button>
-      <p class="popup-status" role="status" aria-live="polite"></p>
-    </form>
-  </div>
+<!-- Попап: відкривається з усіх кнопок CTA і sticky-панелі (структура з лендингу VIP tattoo) -->
+<div class="popup-overlay" id="popupOverlay"></div>
+<div class="popup-card card" id="popupCard" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+  <button class="popup-close" id="popupClose" aria-label="Закрыть" type="button">&times;</button>
+  <h3 id="popupTitle">Ты сможешь освоить основы тату и сделать первые шаги самостоятельно</h3>
+  <p class="popup-sub"><img src="../assets/popup-growth-icon.png" alt="" class="popup-sub-icon" width="120" height="109" loading="lazy" decoding="async"> <span>Мини-курс для новичков от Виктории Поникаровой: 5 дней, простые уроки и обратная связь</span></p>
+  <div class="popup-price"><span class="new">14 €</span><span class="old">99 €</span></div>
+  <form class="popup-form" id="popupForm" data-loading="Переход к оплате…" data-err="Не удалось перейти к оплате. Попробуйте ещё раз или напишите нам в Telegram." data-lang="ru">
+    <input type="email" name="email" placeholder="Твой email" autocomplete="email" required>
+    <input type="tel" name="phone" placeholder="Твой номер телефона" autocomplete="tel" required>
+    <button type="submit" class="btn btn-block">Забрать за 14 €</button>
+  </form>
+  <p class="popup-footnote"><img src="../assets/popup-checkmark-icon.png" alt="" class="popup-footnote-icon" width="120" height="122" loading="lazy" decoding="async"> <span><strong>14 дней гарантия возврата</strong> — без лишних вопросов</span></p>
+  <p class="popup-privacy"><img src="../assets/popup-lock-icon.png" alt="" class="popup-privacy-icon" width="120" height="161" loading="lazy" decoding="async"> <span>Все данные защищены и нужны только для связи с менеджером</span></p>
 </div>
 
 <script>window.VIP_TATTOO_ASSET_BASE = "../assets/";</script>
 <script src="../vendor/instructor-carousel.js?v=915bdbe7" defer></script>
 <script src="../vendor/card-fan-carousel.js?v=57f7e4d4" defer></script>
-<script src="../config.js?v=629e44cf"></script>
-<script src="../script.js?v=3618d09f"></script>
+<script src="../config.js?v=54a16948"></script>
+<script src="../script.js?v=280cca1b"></script>
 </body>
 </html>

@@ -29,59 +29,71 @@
   window.addEventListener('scroll', toggleSticky, { passive: true });
   toggleSticky();
 
-  // Попап із формою: один раз за сесію (exit-intent на десктопі, ~45 с на мобільному).
-  var pop = d.getElementById('leadPopup');
-  var form = d.getElementById('leadForm');
-  if (pop && form) {
-    var seen = false, lastFocus = null;
-    try { seen = sessionStorage.getItem('leadPopupSeen') === '1'; } catch (e) {}
-    var openPop = function () {
-      if (seen || !pop.hidden) return;
-      seen = true;
-      try { sessionStorage.setItem('leadPopupSeen', '1'); } catch (e) {}
-      lastFocus = d.activeElement;
-      pop.hidden = false;
-      d.documentElement.classList.add('pop-open');
-      var f = form.querySelector('input'); if (f) f.focus();
+  // Попап (структура з лендингу VIP tattoo): відкривається з усіх CTA-кнопок і sticky-панелі.
+  // Форма: email + телефон → заявка (за наявності formEndpoint) → Stripe Payment Link
+  // (з підстановкою email), а поки його немає — Telegram-бот.
+  var overlay = d.getElementById('popupOverlay');
+  var card = d.getElementById('popupCard');
+  var form = d.getElementById('popupForm');
+  if (overlay && card && form) {
+    var lastFocus = null;
+    var setOpen = function (open) {
+      overlay.classList.toggle('open', open);
+      card.classList.toggle('open', open);
+      d.body.classList.toggle('popup-open', open);
+      overlay.setAttribute('aria-hidden', String(!open));
+      card.setAttribute('aria-hidden', String(!open));
+      if (open) {
+        lastFocus = d.activeElement;
+        setTimeout(function () { var c = d.getElementById('popupClose'); if (c) c.focus(); }, 0);
+      } else if (lastFocus && lastFocus.focus) { lastFocus.focus(); }
     };
-    var closePop = function () {
-      pop.hidden = true;
-      d.documentElement.classList.remove('pop-open');
-      if (lastFocus && lastFocus.focus) lastFocus.focus();
-    };
-    pop.addEventListener('click', function (ev) {
-      if (ev.target === pop || ev.target.hasAttribute('data-pop-close')) closePop();
+    setOpen(false);
+    d.querySelectorAll('[data-cta]').forEach(function (a) {
+      a.addEventListener('click', function (ev) {
+        ev.preventDefault();
+        try { sessionStorage.setItem('popup_source', (a.textContent || '').trim()); } catch (e) {}
+        setOpen(true);
+      });
     });
-    d.addEventListener('keydown', function (ev) { if (ev.key === 'Escape' && !pop.hidden) closePop(); });
-    var fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    if (fine) {
-      d.addEventListener('mouseout', function (ev) { if (!ev.relatedTarget && ev.clientY <= 0) openPop(); });
-    }
-    setTimeout(openPop, fine ? 90000 : 45000);
+    d.getElementById('popupClose').addEventListener('click', function () { setOpen(false); });
+    overlay.addEventListener('click', function () { setOpen(false); });
+    d.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape' && card.classList.contains('open')) { setOpen(false); return; }
+      if (ev.key === 'Tab' && card.classList.contains('open')) {
+        var f = card.querySelectorAll('a[href],button:not([disabled]),input:not([disabled])');
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (ev.shiftKey && d.activeElement === first) { ev.preventDefault(); last.focus(); }
+        else if (!ev.shiftKey && d.activeElement === last) { ev.preventDefault(); first.focus(); }
+      }
+    });
 
-    var status = form.querySelector('.popup-status');
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
-      var name = form.elements.name.value.trim(), contact = form.elements.contact.value.trim();
-      status.className = 'popup-status';
-      if (!name || !contact || !form.elements.consent.checked) {
-        status.textContent = form.getAttribute('data-req');
-        status.classList.add('err');
-        (!name ? form.elements.name : !contact ? form.elements.contact : form.elements.consent).focus();
-        return;
-      }
-      var done = function () { status.textContent = form.getAttribute('data-ok'); status.classList.add('ok'); form.reset(); };
-      var fail = function () { status.textContent = form.getAttribute('data-err'); status.classList.add('err'); };
+      if (!form.reportValidity()) return;
+      var email = form.elements.email.value.trim(), phone = form.elements.phone.value.trim();
+      var btn = form.querySelector('button[type=submit]'), label = btn.innerHTML;
+      btn.disabled = true; btn.textContent = form.getAttribute('data-loading');
+      var src = ''; try { src = sessionStorage.getItem('popup_source') || ''; } catch (e) {}
+      var go = function () {
+        var url = cfg.stripeLink;
+        if (url) {
+          url += (url.indexOf('?') > -1 ? '&' : '?') + 'prefilled_email=' + encodeURIComponent(email);
+        } else { url = cfg.telegramBot || cfg.telegramPersonal; }
+        if (!url) { btn.disabled = false; btn.innerHTML = label; alert(form.getAttribute('data-err')); return; }
+        window.location.href = url;
+      };
       if (cfg.formEndpoint) {
+        // Заявку не чекаємо довше 2 с, щоб не гальмувати перехід до оплати.
+        var done = false, once = function () { if (!done) { done = true; go(); } };
+        setTimeout(once, 2000);
         fetch(cfg.formEndpoint, {
           method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ name: name, contact: contact, lang: d.documentElement.lang })
-        }).then(function (r) { r.ok ? done() : fail(); }).catch(fail);
-      } else if (cfg.telegramPersonal) {
-        var text = form.getAttribute('data-msg').replace('{name}', name).replace('{contact}', contact);
-        window.open(cfg.telegramPersonal + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
-        done();
-      } else { fail(); }
+          body: JSON.stringify({ email: email, phone: phone, lang: form.getAttribute('data-lang'), source: src }),
+          keepalive: true
+        }).then(once, once);
+      } else { go(); }
     });
   }
 

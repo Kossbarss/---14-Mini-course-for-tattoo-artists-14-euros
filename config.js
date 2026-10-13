@@ -6,8 +6,8 @@ window.SITE_CONFIG = {
   // Поки порожньо — кнопки ведуть у Telegram Вікторії (запасний варіант).
   stripeLink: '',
 
-  // Адреса для заявок з попапу (напр. Formspree: https://formspree.io/f/xxxx). Приймає POST JSON {name, contact, lang}.
-  // Поки порожньо — після відправки відкривається Telegram Вікторії з готовим повідомленням.
+  // Адреса для заявок з попапу (напр. Formspree: https://formspree.io/f/xxxx). POST JSON {email, phone, lang, source}.
+  // Необов'язково: без нього форма просто переадресовує на оплату (Stripe) або в Telegram-бот.
   formEndpoint: '',
 
   telegramPersonal: 'https://t.me/+48733341364',
