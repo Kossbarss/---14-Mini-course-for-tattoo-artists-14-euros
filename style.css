@@ -843,3 +843,15 @@ html.pop-open,body.popup-open{overflow:hidden}
 .consent-note,.popup-consent{margin:12px auto 0;max-width:520px;font-size:12px;line-height:1.5;color:var(--text);opacity:.6;text-align:center}
 .consent-note a,.popup-consent a{color:var(--lime);text-decoration:underline;text-underline-offset:2px}
 .popup-consent{margin:-6px 0 4px;font-size:11px}
+
+/* «Роботи студентів» — стрічка карток, що біжить (як «Відгуки випускників» у плагіні):
+   рамка картки, градієнтне згасання по краях, перетягування мишею/пальцем */
+.works-marquee{margin-top:24px;margin-bottom:40px;padding:16px 0;position:relative;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,#0000 0,#000 28px calc(100% - 28px),#0000 100%);mask-image:linear-gradient(90deg,#0000 0,#000 28px calc(100% - 28px),#0000 100%)}
+.works-track{display:flex;gap:13px;width:max-content;cursor:grab;user-select:none;-webkit-user-select:none;touch-action:pan-y;will-change:transform}
+.works-track.is-dragging{cursor:grabbing}
+.works-card{flex:none;width:320px;margin:0;padding:12px;background:var(--card);border:1.5px solid var(--lime);border-radius:18px;box-shadow:0 0 24px rgba(201,234,60,.12)}
+.works-card img{display:block;width:100%;height:400px;object-fit:cover;border-radius:10px;pointer-events:none}
+@media (max-width:640px){.works-card{width:260px;padding:10px}.works-card img{height:330px}}
+@media (min-width:1024px){.works-marquee{-webkit-mask-image:linear-gradient(90deg,#0000 0,#000 80px calc(100% - 80px),#0000 100%);mask-image:linear-gradient(90deg,#0000 0,#000 80px calc(100% - 80px),#0000 100%)}}
+@media (prefers-reduced-motion:reduce){.works-marquee{overflow-x:auto}.works-track{transform:none!important}}

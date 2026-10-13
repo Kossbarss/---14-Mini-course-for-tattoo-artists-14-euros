@@ -130,6 +130,33 @@
     setInterval(tick, 1000);
   }
 
+  // «Роботи студентів»: безкінечна стрічка (авто-прокрутка + перетягування), пауза при наведенні.
+  var wm = d.querySelector('[data-works-marquee]');
+  var wt = wm && wm.querySelector('.works-track');
+  if (wt && !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+    var setHtml = wt.innerHTML; wt.insertAdjacentHTML('beforeend', setHtml);
+    var half = 0, x = 0, speed = 36, hover = false, drag = false, startX = 0, startOff = 0, visible = true, last = 0;
+    var measure = function () { half = wt.scrollWidth / 2; };
+    var apply = function () { if (half) { x = ((x % half) + half) % half; } wt.style.transform = 'translate3d(' + (-x) + 'px,0,0)'; };
+    measure(); window.addEventListener('resize', measure); window.addEventListener('load', measure);
+    wm.addEventListener('mouseenter', function () { hover = true; });
+    wm.addEventListener('mouseleave', function () { hover = false; });
+    wt.addEventListener('pointerdown', function (ev) {
+      drag = true; startX = ev.clientX; startOff = x; wt.classList.add('is-dragging'); wt.setPointerCapture(ev.pointerId);
+    });
+    wt.addEventListener('pointermove', function (ev) { if (drag) { x = startOff - (ev.clientX - startX); apply(); } });
+    var end = function () { drag = false; wt.classList.remove('is-dragging'); };
+    wt.addEventListener('pointerup', end); wt.addEventListener('pointercancel', end);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) { visible = es[0].isIntersecting; }).observe(wm);
+    }
+    var frame = function (t) {
+      if (last && visible && !hover && !drag) { x += speed * Math.min(t - last, 64) / 1000; apply(); }
+      last = t; requestAnimationFrame(frame);
+    };
+    requestAnimationFrame(frame);
+  }
+
   // Поява при скролі.
   var items = d.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {

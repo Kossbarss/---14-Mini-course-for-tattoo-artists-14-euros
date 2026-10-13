@@ -58,6 +58,7 @@ UA = dict(
         "Маєш чіткий план подальшого розвитку і знаєш, що відпрацьовувати далі",
     ],
     get_vs="Без курсу — місяці хаотичних пошуків, суперечливі поради, страх зробити перший крок. З курсом — покрокова система, практика на штучній шкірі й розбір твоїх робіт від Вікторії.",
+    works_eyebrow="Портфоліо", works_title="Роботи студентів", works_lead="Реальні роботи учнів — від повного нуля до впевнених перших результатів.", works_alt="Робота студента VIP tattoo school",
     base_eyebrow="Методика", base_title="Що таке «Сильна база» і <em>чому вона працює</em>",
     base_lead="Більшість новачків провалюються не через відсутність таланту, а через відсутність системи.",
     bases=[
@@ -183,6 +184,7 @@ RU = dict(
         "Имеешь чёткий план дальнейшего развития и знаешь, что отрабатывать дальше",
     ],
     get_vs="Без курса — месяцы хаотичных поисков, противоречивые советы, страх сделать первый шаг. С курсом — пошаговая система, практика на искусственной коже и разбор твоих работ от Виктории.",
+    works_eyebrow="Портфолио", works_title="Работы студентов", works_lead="Реальные работы учеников — от полного нуля до уверенных первых результатов.", works_alt="Работа студента VIP tattoo school",
     base_eyebrow="Методика", base_title="Что такое «Сильная база» и <em>почему она работает</em>",
     base_lead="Большинство новичков проваливаются не из-за отсутствия таланта, а из-за отсутствия системы.",
     bases=[
@@ -274,6 +276,9 @@ def e(s):
     return escape(s, quote=True)
 
 
+WORKS = 8  # кількість фото assets/work-N.jpg у розділі «Роботи студентів»
+
+
 def build(t, ua):
     p = "" if ua else "../"           # префікс до спільних файлів
     self_url = f"{SITE}/" if ua else f"{SITE}/ru/"
@@ -289,6 +294,7 @@ def build(t, ua):
     bonuses = "".join(
         f'<div class="card bonus reveal"><div class="n">0{i}</div><div><h3>{h}</h3><p>{b}</p></div></div>'
         for i, (h, b) in enumerate(t["bonuses"], 1))
+    works = "".join(f'<figure class="works-card"><img src="{p}assets/work-{n}.jpg" alt="{e(t["works_alt"])} {n}" width="800" height="1000" loading="lazy" decoding="async" draggable="false"></figure>' for n in range(1, WORKS + 1))
     bases = "".join(f'<div class="card base reveal"><span class="base-dot" aria-hidden="true"></span><h3>{h}</h3><p>{d}</p></div>' for h, d in t["bases"])
     sols = "".join(f'<div class="card sol reveal"><div class="num">0{i}</div><h3>{h}</h3><p>{d}</p></div>' for i, (h, d) in enumerate(t["sols"], 1))
     gets = "".join(f'<div class="card get reveal"><span class="get-ok" aria-hidden="true">✓</span><h3>{x}</h3></div>' for x in t["gets"])
@@ -364,6 +370,13 @@ def build(t, ua):
 </section>
 
 <div class="stats"><div class="container stats-grid">{stats}</div></div>
+
+<section id="works">
+  <div class="container">
+    <div class="head center reveal"><span class="eyebrow">{t['works_eyebrow']}</span><h2 class="title">{t['works_title']}</h2><p class="lead">{t['works_lead']}</p></div>
+  </div>
+  <div class="works-marquee reveal" data-works-marquee><div class="works-track">{works}</div></div>
+</section>
 
 <section class="pain">
   <div class="container">
