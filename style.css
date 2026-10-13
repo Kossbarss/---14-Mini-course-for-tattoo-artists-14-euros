@@ -736,3 +736,32 @@ main > section.final {
 .cases-marquee-verified-label { font-size: .62rem; letter-spacing: .01em; color: rgba(243, 245, 232, .6); white-space: nowrap; }
 .cases-marquee-verified svg { flex-shrink: 0; }
 @media (prefers-reduced-motion: reduce) { .cases-marquee-verified-dot { animation: none; } }
+
+/* Підвал: посилання на юридичні документи */
+.footer .legal .legal-links { display: flex; flex-wrap: wrap; gap: 8px 24px; margin-bottom: 12px; opacity: 1; }
+.footer .legal .legal-links a { display: inline; margin: 0; color: var(--text); text-decoration: underline; text-underline-offset: 3px; font-size: 13px; font-weight: 700; }
+.footer .legal .legal-links a:hover { color: var(--lime); }
+
+/* Юридичні сторінки (offer.html, privacy.html) */
+.legal-body { padding-bottom: 0; }
+.legal-header { padding: 22px 0; border-bottom: 1px solid var(--line); }
+.legal-header .container { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.legal-header .brand { font-size: 1.1rem; gap: 12px; }
+.legal-header .brand img { width: 44px; height: 44px; }
+.legal-back { font-size: 14px; font-weight: 700; color: var(--lime); text-decoration: none; }
+.legal-back:hover { text-shadow: 0 0 16px var(--glow); }
+.legal-content { max-width: 860px; padding: 48px 0 72px; color: var(--text-2); }
+.legal-content h1 { font-size: var(--fs-block); line-height: 1.3; text-transform: uppercase; color: var(--text); margin-bottom: 24px; }
+.legal-content h2 { font-size: var(--fs-sub); line-height: 1.4; text-transform: uppercase; color: var(--lime); margin: 36px 0 12px; }
+.legal-content p, .legal-content li { font-size: 15px; line-height: 1.6; margin: 0 0 12px; white-space: pre-line; }
+.legal-content p strong, .legal-content li strong { color: var(--text); }
+.legal-content ul, .legal-content ol { margin: 0 0 12px; padding-left: 22px; }
+.legal-content li { white-space: normal; }
+.legal-content a { color: var(--lime); }
+.legal-foot { border-top: 1px solid var(--line); padding: 28px 0 36px; font-size: 13px; color: var(--text-3); }
+.legal-foot .container { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center; }
+.legal-foot a { color: var(--text); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.legal-foot a:hover { color: var(--lime); }
+@media (max-width: 520px) { .legal-header .brand { font-size: .95rem; } .legal-content { padding: 32px 0 56px; } }
+.footer .legal { opacity: 1; }
+.footer .legal p:not(.legal-links) { opacity: .75; }

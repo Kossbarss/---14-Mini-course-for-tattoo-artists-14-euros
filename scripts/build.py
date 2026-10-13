@@ -107,6 +107,7 @@ UA = dict(
     f_about="VIP tattoo school", f_about_p="Онлайн-навчання для тату-майстрів від Вікторії Поникарової.",
     f_contacts="Контакти", f_tg="Telegram Вікторії", f_bot="Telegram-бот", f_ig="Instagram",
     f_more="Школа", f_site="Повний курс VIP tattoo school",
+    f_privacy="Політика конфіденційності", f_offer="Договір оферти",
     legal="Firma Виктория Поникарова · NIP 6492327660. Курс має освітній та інформаційний характер. Результат залежить від твоєї практики й активності, тому ми не гарантуємо конкретного доходу чи кількості клієнтів. Навчання доступне з 18 років.",
     copyright="© 2026 VIP tattoo school. Усі права захищені.",
     alt_hero="Вікторія Поникарова з тату-машинкою",
@@ -202,6 +203,7 @@ RU = dict(
     f_about="VIP tattoo school", f_about_p="Онлайн-обучение для тату-мастеров от Виктории Поникаровой.",
     f_contacts="Контакты", f_tg="Telegram Виктории", f_bot="Telegram-бот", f_ig="Instagram",
     f_more="Школа", f_site="Полный курс VIP tattoo school",
+    f_privacy="Политика конфиденциальности", f_offer="Договор оферты",
     legal="Firma Виктория Поникарова · NIP 6492327660. Курс носит образовательный и информационный характер. Результат зависит от твоей практики и активности, поэтому мы не гарантируем конкретного дохода или количества клиентов. Обучение доступно с 18 лет.",
     copyright="© 2026 VIP tattoo school. Все права защищены.",
     alt_hero="Виктория Поникарова с тату-машинкой",
@@ -411,7 +413,7 @@ def build(t, ua):
       <a data-link="telegramBot" href="https://t.me/mentor_tatoo_Viktoria_bot">{t['f_bot']}</a>
       <a data-link="instagram" href="https://www.instagram.com/viktoriia_ponikarova">{t['f_ig']}</a></div>
     <div><h4>{t['f_more']}</h4><a data-link="fullCourse" href="https://vip-tattoo-school.com/">{t['f_site']}</a></div>
-    <div class="legal"><p>{t['legal']}</p><p style="margin-top:8px">{t['copyright']}</p></div>
+    <div class="legal"><p class="legal-links"><a href="privacy.html">{t['f_privacy']}</a><a href="offer.html">{t['f_offer']}</a></p><p>{t['legal']}</p><p style="margin-top:8px">{t['copyright']}</p></div>
   </div>
 </footer>
 
@@ -434,3 +436,7 @@ def build(t, ua):
 (ROOT / "index.html").write_text(build(UA, True), encoding="utf-8")
 (ROOT / "ru" / "index.html").write_text(build(RU, False), encoding="utf-8")
 print("built index.html, ru/index.html")
+
+# юридичні сторінки (використовують хеш style.css, тому запускаються останніми)
+import runpy
+runpy.run_path(str(ROOT / "scripts" / "build_legal.py"), run_name="__main__")
