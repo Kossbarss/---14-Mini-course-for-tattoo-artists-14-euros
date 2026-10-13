@@ -855,3 +855,4 @@ html.pop-open,body.popup-open{overflow:hidden}
 @media (max-width:640px){.works-card{width:260px;padding:10px}.works-card img{height:330px}}
 @media (min-width:1024px){.works-marquee{-webkit-mask-image:linear-gradient(90deg,#0000 0,#000 80px calc(100% - 80px),#0000 100%);mask-image:linear-gradient(90deg,#0000 0,#000 80px calc(100% - 80px),#0000 100%)}}
 @media (prefers-reduced-motion:reduce){.works-marquee{overflow-x:auto}.works-track{transform:none!important}}
+.works-card figcaption{margin-top:10px;text-align:center;font-size:14px;font-weight:700;color:var(--text);letter-spacing:.2px}
