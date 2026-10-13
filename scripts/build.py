@@ -293,6 +293,7 @@ def build(t, ua):
       <div class="tags">{tags}</div>
     </div>
     <div class="hero-photo">
+      <span class="bracket tl"></span><span class="bracket tr"></span><span class="bracket bl"></span><span class="bracket br"></span>
       <div class="frame"><img src="{p}assets/instructor-tattoo-machine.jpg" alt="{t['alt_hero']}" width="1000" height="1250" fetchpriority="high"></div>
       <div class="hero-chip"><b>{t['chip_b']}</b><span>{t['chip_s']}</span></div>
     </div>
@@ -323,10 +324,10 @@ def build(t, ua):
   </div>
 </section>
 
-<section class="instructor-wrap instructor-wrap--light" id="instructor">
+<section class="instructor-wrap" id="instructor">
   <div class="container">
     <div class="instructor-section">
-      <img src="{p}assets/logo-mark-black.png" class="section-watermark" alt="" aria-hidden="true">
+      <img src="{p}assets/logo-watermark.png" class="section-watermark" alt="" aria-hidden="true">
       <div class="instructor-layout">
         <div id="instructorCarousel" class="instructor-carousel-mount"></div>
 
@@ -394,9 +395,9 @@ def build(t, ua):
     <div class="reveal">
       <h2 class="title">{t['final_title']}</h2>
       <p class="lead">{t['final_p']}</p>
-      <div class="price-row" style="margin-top:22px"><span class="price-old" style="color:var(--muted)">{t['old']}</span><span class="price-new" style="color:var(--blood)">{t['new']}</span></div>
+      <div class="price-row" style="margin-top:22px"><span class="price-old">{t['old']}</span><span class="price-new">{t['new']}</span></div>
       {cta('btn-wide')}
-      <p class="price-note" style="color:var(--muted)">{t['final_note']}</p>
+      <p class="price-note">{t['final_note']}</p>
     </div>
   </div>
 </section>
