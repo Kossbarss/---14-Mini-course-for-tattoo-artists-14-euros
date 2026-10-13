@@ -781,3 +781,6 @@ main > section.final {
 .base-dot { display: block; width: 12px; height: 12px; border-radius: 3px; background: var(--lime); box-shadow: 0 0 16px var(--glow); margin-bottom: 18px; }
 .base h3 { color: var(--text); }
 
+
+/* Непарна остання картка бонусів — на всю ширину */
+.cards-2 > .bonus:last-child:nth-child(odd){grid-column:1/-1}
