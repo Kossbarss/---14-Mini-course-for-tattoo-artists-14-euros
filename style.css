@@ -891,3 +891,5 @@ html.pop-open,body.popup-open{overflow:hidden}
 h1, .title { background: var(--grad-silver); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 h1 em, .title em { -webkit-text-fill-color: transparent; background: var(--grad-gold); -webkit-background-clip: text; background-clip: text; text-shadow: none; }
 .hero h1, .final .title { text-shadow: none; }
+/* Брендований логотип YouTube у заголовку картки (червона іконка + білий напис для темного тла) */
+.yt-logo{display:inline-block;height:1.15em;width:auto;vertical-align:-.22em;margin-right:.1em}
