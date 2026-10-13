@@ -865,12 +865,29 @@ html.pop-open,body.popup-open{overflow:hidden}
 .works-card{background:linear-gradient(180deg,var(--card) 0%,rgba(48, 34, 8,.28) 60%,rgba(48, 34, 8,.5) 100%);box-shadow:0 0 24px rgba(255, 216, 136,.12),0 18px 44px -14px rgba(48, 34, 8,.7)}
 .works-marquee{padding-bottom:48px;margin-bottom:0}
 
+/* ===== ОСНОВНА ПАЛІТРА САЙТУ (khirkovskiy.space) — змінюйте кольори й градієнти тільки тут ===== */
+:root {
+  --brand-bg: #080808;            /* фон сторінки */
+  --brand-bg-2: #0c0c0c;          /* чергування секцій */
+  --brand-card-from: #101010;     /* картка: початок градієнта */
+  --brand-card-to: #1c1c1c;       /* картка: кінець градієнта */
+  --brand-text: #ececec;          /* основний текст */
+  --brand-text-2: #c9c9c9;
+  --brand-text-3: #aaaaaa;        /* приглушений текст */
+  --brand-muted: #999999;
+  --brand-gold: #ffd888;          /* головний акцент */
+  --brand-gold-2: #ffe5b1;        /* світліший акцент (кінець градієнта) */
+  --brand-btn-text: #69470c;      /* текст на золотій кнопці (темний бурштин) */
+  --grad-card: linear-gradient(90deg, var(--brand-card-from) 0%, var(--brand-card-to) 100%);
+  --grad-gold: linear-gradient(90deg, var(--brand-gold) 0%, var(--brand-gold-2) 100%);
+  --grad-silver: linear-gradient(90deg, var(--brand-text) 0%, var(--brand-text-3) 100%);
+}
 /* ===== Палітра khirkovskiy.space: чорний #080808, картки-градієнт #101010→#1c1c1c, срібний текст #ececec→#aaaaaa,
    золота кнопка-градієнт #ffd888→#ffe5b1 з темно-бурштиновим текстом #69470c ===== */
-.btn, .sticky .btn, .get-ok, .step::before { background-image: linear-gradient(90deg, #ffd888 0%, #ffe5b1 100%); }
-.btn, .sticky .btn { color: #69470c; }
+.btn, .sticky .btn, .get-ok, .step::before { background-image: var(--grad-gold); }
+.btn, .sticky .btn { color: var(--brand-btn-text); }
 .btn:hover { filter: brightness(1.05); }
-.card, .faq details, .promo-bar-in, .works-card, .popup-card, .hero-chip { background-image: linear-gradient(90deg, #101010 0%, #1c1c1c 100%); }
-h1, .title { background: linear-gradient(90deg, #ececec 0%, #aaaaaa 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
-h1 em, .title em { -webkit-text-fill-color: transparent; background: linear-gradient(90deg, #ffd888 0%, #ffe5b1 100%); -webkit-background-clip: text; background-clip: text; text-shadow: none; }
+.card, .faq details, .promo-bar-in, .works-card, .popup-card, .hero-chip { background-image: var(--grad-card); }
+h1, .title { background: var(--grad-silver); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+h1 em, .title em { -webkit-text-fill-color: transparent; background: var(--grad-gold); -webkit-background-clip: text; background-clip: text; text-shadow: none; }
 .hero h1, .final .title { text-shadow: none; }
