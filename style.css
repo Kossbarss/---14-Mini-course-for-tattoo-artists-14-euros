@@ -838,3 +838,8 @@ html.pop-open,body.popup-open{overflow:hidden}
 .sticky small{display:block;max-width:none;grid-column:auto;font-size:11px;line-height:1.3;text-align:right}
 .sticky .btn{display:block;width:100%;flex:none;padding:14px;font-size:15px;border-radius:12px;text-align:center}
 }
+
+/* Згода з офертою біля кнопок оплати */
+.consent-note,.popup-consent{margin:12px auto 0;max-width:520px;font-size:12px;line-height:1.5;color:var(--text);opacity:.6;text-align:center}
+.consent-note a,.popup-consent a{color:var(--lime);text-decoration:underline;text-underline-offset:2px}
+.popup-consent{margin:-6px 0 4px;font-size:11px}

@@ -125,7 +125,8 @@ UA = dict(
     ],
     final_title="Зроби перший крок за ціну <em>однієї кави</em>",
     final_p="14 € замість 99 €. Доступ одразу після оплати, 14 днів гарантії повернення коштів.",
-    final_note="Оплата через Stripe. Усі дані захищені.",
+    final_note="Оплата через Stripe. Усі дані захищені. Старт одразу після оплати: перший урок відкривається в день оплати, далі — по одному щодня.",
+    consent='Натискаючи кнопку, ти погоджуєшся з <a href="offer.html" target="_blank" rel="noopener">договором оферти</a> та <a href="privacy.html" target="_blank" rel="noopener">політикою конфіденційності</a>.',
     sticky_small="14 днів гарантія повернення",
     f_about="VIP tattoo school", f_about_p="Онлайн-навчання для тату-майстрів від Вікторії Поникарової.",
     f_contacts="Контакти", f_tg="Telegram Вікторії", f_bot="Telegram-канал", f_ig="Instagram",
@@ -249,7 +250,8 @@ RU = dict(
     ],
     final_title="Сделай первый шаг по цене <em>одной чашки кофе</em>",
     final_p="14 € вместо 99 €. Доступ сразу после оплаты, 14 дней гарантии возврата средств.",
-    final_note="Оплата через Stripe. Все данные защищены.",
+    final_note="Оплата через Stripe. Все данные защищены. Старт сразу после оплаты: первый урок открывается в день оплаты, дальше — по одному в день.",
+    consent='Нажимая кнопку, ты соглашаешься с <a href="offer.html" target="_blank" rel="noopener">договором оферты</a> и <a href="privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>.',
     sticky_small="14 дней гарантия возврата",
     f_about="VIP tattoo school", f_about_p="Онлайн-обучение для тату-мастеров от Виктории Поникаровой.",
     f_contacts="Контакты", f_tg="Telegram Виктории", f_bot="Telegram-канал", f_ig="Instagram",
@@ -486,6 +488,7 @@ def build(t, ua):
       <div class="price-row" style="margin-top:22px"><span class="price-old">{t['old']}</span><span class="price-new">{t['new']}</span></div>
       {cta('btn-wide')}
       <p class="price-note">{t['final_note']}</p>
+      <p class="consent-note">{t['consent']}</p>
     </div>
   </div>
 </section>
@@ -523,6 +526,7 @@ def build(t, ua):
     <input type="tel" name="phone" placeholder="{e(t['pop_phone'])}" autocomplete="tel" required>
     <button type="submit" class="btn btn-block">{t['pop_btn']}</button>
   </form>
+  <p class="popup-consent">{t['consent']}</p>
   <p class="popup-timer-label">{t['tm_title'].lstrip('🔥 ')}</p>
   <div class="popup-timer">
     <div class="t-box"><span class="t-num" data-timer="h">08</span><span class="t-label">{t['tm_h']}</span></div>
