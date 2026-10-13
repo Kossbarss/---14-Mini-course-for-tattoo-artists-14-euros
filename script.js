@@ -86,11 +86,17 @@
       };
       if (cfg.formEndpoint) {
         // Заявку не чекаємо довше 2 с, щоб не гальмувати перехід до оплати.
+        // text/plain + no-cors: Google Apps Script (Google-таблиця) не відповідає на CORS-preflight.
         var done = false, once = function () { if (!done) { done = true; go(); } };
         setTimeout(once, 2000);
+        var qs = new URLSearchParams(window.location.search);
         fetch(cfg.formEndpoint, {
-          method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ email: email, phone: phone, lang: form.getAttribute('data-lang'), source: src }),
+          method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify({
+            email: email, phone: phone, lang: form.getAttribute('data-lang'), source: src,
+            utm_source: qs.get('utm_source') || '', utm_medium: qs.get('utm_medium') || '', utm_campaign: qs.get('utm_campaign') || '',
+            page: window.location.pathname
+          }),
           keepalive: true
         }).then(once, once);
       } else { go(); }

@@ -6,8 +6,8 @@ window.SITE_CONFIG = {
   // Поки порожньо — кнопки ведуть у Telegram Вікторії (запасний варіант).
   stripeLink: '',
 
-  // Адреса для заявок з попапу (напр. Formspree: https://formspree.io/f/xxxx). POST JSON {email, phone, lang, source}.
-  // Необов'язково: без нього форма просто переадресовує на оплату (Stripe) або в Telegram-канал.
+  // Адреса для заявок з попапу: URL веб-застосунку Google Apps Script (заявки потрапляють у Google-таблицю).
+  // Інструкція і код: docs/google-sheets-apps-script.gs. Необов'язково: без нього форма просто переадресовує на оплату (Stripe) або в Telegram-канал.
   formEndpoint: '',
 
   // Таймер акції. promoEnd — реальний кінець акції (напр. '2026-11-01T23:59:00+01:00'), спільний для всіх.
