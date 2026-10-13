@@ -776,3 +776,8 @@ main > section.final {
 .get-vs { margin-top: 18px; border-left: 4px solid var(--lime-2); }
 .get-vs p { color: var(--text-2); font-size: var(--fs-text); line-height: 1.5; }
 
+/* «Що таке „Сильна база"» — три картки методики */
+.base { position: relative; }
+.base-dot { display: block; width: 12px; height: 12px; border-radius: 3px; background: var(--lime); box-shadow: 0 0 16px var(--glow); margin-bottom: 18px; }
+.base h3 { color: var(--text); }
+
