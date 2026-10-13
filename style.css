@@ -765,3 +765,14 @@ main > section.final {
 @media (max-width: 520px) { .legal-header .brand { font-size: .95rem; } .legal-content { padding: 32px 0 56px; } }
 .footer .legal { opacity: 1; }
 .footer .legal p:not(.legal-links) { opacity: .75; }
+
+/* «Як курс вирішує ці проблеми» (3 пронумеровані картки) і «Що отримаєш за 5 днів» (4 результати + порівняння) */
+.sol { position: relative; }
+.sol .num { font-size: 32px; }
+.sol h3 { color: var(--text); }
+.get { display: flex; align-items: center; gap: 16px; border-left: 4px solid var(--lime); }
+.get h3 { margin: 0; font-size: var(--fs-text); line-height: 1.5; color: var(--text); }
+.get-ok { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; background: var(--lime); color: #050505; font-weight: 700; font-size: 16px; box-shadow: 0 0 18px var(--glow); }
+.get-vs { margin-top: 18px; border-left: 4px solid var(--lime-2); }
+.get-vs p { color: var(--text-2); font-size: var(--fs-text); line-height: 1.5; }
+
