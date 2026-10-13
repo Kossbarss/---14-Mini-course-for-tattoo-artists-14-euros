@@ -887,9 +887,11 @@ html.pop-open,body.popup-open{overflow:hidden}
 .btn, .sticky .btn, .get-ok, .step::before { background-image: var(--grad-gold); }
 .btn, .sticky .btn { color: var(--brand-btn-text); }
 .btn:hover { filter: brightness(1.05); }
-.card, .faq details, .promo-bar-in, .works-card, .popup-card, .hero-chip { background-image: var(--grad-card); }
+.card, .faq details, .promo-bar-in, .popup-card, .hero-chip { background-image: var(--grad-card); }
 h1, .title { background: var(--grad-silver); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
 h1 em, .title em { -webkit-text-fill-color: transparent; background: var(--grad-gold); -webkit-background-clip: text; background-clip: text; text-shadow: none; }
 .hero h1, .final .title { text-shadow: none; }
 /* Брендований логотип YouTube у заголовку картки (червона іконка + білий напис для темного тла) */
 .yt-logo{display:inline-block;height:2em;width:auto;vertical-align:-.55em;margin:0 .45em .1em 0}
+/* Підсвітка позаду фото в стрічці «Практика учнів»: тепле золоте сяйво від низу картки і під нею */
+.works-card { background-image: linear-gradient(180deg, var(--brand-card-from) 0%, rgba(255, 216, 136, .14) 62%, rgba(255, 216, 136, .34) 100%); box-shadow: 0 0 24px rgba(255, 216, 136, .14), 0 20px 46px -12px rgba(255, 216, 136, .42); }
