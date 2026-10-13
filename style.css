@@ -843,9 +843,3 @@ html.pop-open,body.popup-open{overflow:hidden}
 .consent-note,.popup-consent{margin:12px auto 0;max-width:520px;font-size:12px;line-height:1.5;color:var(--text);opacity:.6;text-align:center}
 .consent-note a,.popup-consent a{color:var(--lime);text-decoration:underline;text-underline-offset:2px}
 .popup-consent{margin:-6px 0 4px;font-size:11px}
-
-/* «Роботи студентів» — сітка фото (структура з лендингу-джерела) */
-.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;max-width:960px;margin:0 auto}
-.gallery-tile{margin:0;position:relative;overflow:hidden;border-radius:14px;border:1px solid var(--line);background:var(--card);aspect-ratio:4/5}
-.gallery-tile img{display:block;width:100%;height:100%;object-fit:cover}
-@media (min-width:900px){.gallery-grid{grid-template-columns:repeat(3,1fr);gap:14px}}
