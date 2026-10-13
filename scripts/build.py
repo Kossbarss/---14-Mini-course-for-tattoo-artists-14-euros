@@ -504,7 +504,10 @@ def build(t, ua):
 </footer>
 
 <div class="sticky" role="region" aria-label="{e(t['cta'])}">
-  <div class="p"><s>{t['old']}</s><b>{t['new']}</b><small>{t['sticky_small']}</small></div>
+  <div class="sticky-row">
+    <div class="p"><s>{t['old']}</s><b>{t['new']}</b></div>
+    <small>{t['sticky_small']}</small>
+  </div>
   <a class="btn" data-cta href="#">{t['cta']}</a>
 </div>
 
