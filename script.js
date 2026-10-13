@@ -97,6 +97,33 @@
     });
   }
 
+  // Таймер акції. cfg.promoEnd (ISO-дата) — реальний спільний дедлайн; інакше — індивідуальний
+  // відлік cfg.promoHours годин від першого візиту (зберігається в localStorage), після нуля стартує знову.
+  var tEls = { h: d.querySelectorAll('[data-timer="h"]'), m: d.querySelectorAll('[data-timer="m"]'), s: d.querySelectorAll('[data-timer="s"]') };
+  if (tEls.s.length) {
+    var span = (cfg.promoHours || 9) * 3600000, fixedEnd = cfg.promoEnd ? Date.parse(cfg.promoEnd) : NaN;
+    var end = fixedEnd;
+    if (isNaN(end)) {
+      try { end = parseInt(localStorage.getItem('promoEnd'), 10); } catch (e) {}
+      if (!end || end < Date.now()) {
+        end = Date.now() + span;
+        try { localStorage.setItem('promoEnd', String(end)); } catch (e) {}
+      }
+    }
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    var tick = function () {
+      var left = end - Date.now();
+      if (left <= 0) {
+        if (isNaN(fixedEnd)) { end = Date.now() + span; try { localStorage.setItem('promoEnd', String(end)); } catch (e) {} left = span; }
+        else left = 0;
+      }
+      var sec = Math.floor(left / 1000), v = { h: pad(Math.floor(sec / 3600)), m: pad(Math.floor(sec % 3600 / 60)), s: pad(sec % 60) };
+      ['h', 'm', 's'].forEach(function (k) { tEls[k].forEach(function (el) { el.textContent = v[k]; }); });
+    };
+    tick();
+    setInterval(tick, 1000);
+  }
+
   // Поява при скролі.
   var items = d.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {

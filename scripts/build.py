@@ -132,6 +132,7 @@ UA = dict(
     f_more="Школа", f_site="Повний курс VIP tattoo school",
     pop_title="Ти зможеш освоїти основи тату і зробити перші кроки самостійно", pop_sub="Міні-курс для новачків від Вікторії Поникарової: 5 днів, прості уроки й зворотний зв'язок",
     pop_email="Твій email", pop_phone="Твій номер телефону", pop_btn="Забрати за 14 €", pop_loading="Перехід до оплати…",
+    tm_title="🔥 До кінця акції", tm_after="Потім ціна повертається до 99 €", tm_h="годин", tm_m="хвилин", tm_s="секунд",
     pop_foot="<strong>14 днів гарантія повернення</strong> — без зайвих запитань", pop_priv="Усі дані захищені та потрібні лише для зв'язку з менеджером", pop_close="Закрити",
     pop_err="Не вдалося перейти до оплати. Спробуйте ще раз або напишіть нам у Telegram.",
     f_privacy="Політика конфіденційності", f_offer="Договір оферти",
@@ -255,6 +256,7 @@ RU = dict(
     f_more="Школа", f_site="Полный курс VIP tattoo school",
     pop_title="Ты сможешь освоить основы тату и сделать первые шаги самостоятельно", pop_sub="Мини-курс для новичков от Виктории Поникаровой: 5 дней, простые уроки и обратная связь",
     pop_email="Твой email", pop_phone="Твой номер телефона", pop_btn="Забрать за 14 €", pop_loading="Переход к оплате…",
+    tm_title="🔥 До конца акции", tm_after="Потом цена возвращается к 99 €", tm_h="часов", tm_m="минут", tm_s="секунд",
     pop_foot="<strong>14 дней гарантия возврата</strong> — без лишних вопросов", pop_priv="Все данные защищены и нужны только для связи с менеджером", pop_close="Закрыть",
     pop_err="Не удалось перейти к оплате. Попробуйте ещё раз или напишите нам в Telegram.",
     f_privacy="Политика конфиденциальности", f_offer="Договор оферты",
@@ -358,6 +360,11 @@ def build(t, ua):
     </div>
   </div>
 </section>
+
+<div class="promo-bar"><div class="container"><div class="promo-bar-in">
+  <div><b>{t['tm_title']}</b><span>{t['tm_after']}</span></div>
+  <div class="promo-time" aria-live="off"><span data-timer="h">08</span>:<span data-timer="m">00</span>:<span data-timer="s">00</span></div>
+</div></div></div>
 
 <div class="stats"><div class="container stats-grid">{stats}</div></div>
 
@@ -513,6 +520,12 @@ def build(t, ua):
     <input type="tel" name="phone" placeholder="{e(t['pop_phone'])}" autocomplete="tel" required>
     <button type="submit" class="btn btn-block">{t['pop_btn']}</button>
   </form>
+  <p class="popup-timer-label">{t['tm_title'].lstrip('🔥 ')}</p>
+  <div class="popup-timer">
+    <div class="t-box"><span class="t-num" data-timer="h">08</span><span class="t-label">{t['tm_h']}</span></div>
+    <div class="t-box"><span class="t-num" data-timer="m">00</span><span class="t-label">{t['tm_m']}</span></div>
+    <div class="t-box"><span class="t-num" data-timer="s">00</span><span class="t-label">{t['tm_s']}</span></div>
+  </div>
   <p class="popup-footnote"><img src="{p}assets/popup-checkmark-icon.png" alt="" class="popup-footnote-icon" width="120" height="122" loading="lazy" decoding="async"> <span>{t['pop_foot']}</span></p>
   <p class="popup-privacy"><img src="{p}assets/popup-lock-icon.png" alt="" class="popup-privacy-icon" width="120" height="161" loading="lazy" decoding="async"> <span>{t['pop_priv']}</span></p>
 </div>

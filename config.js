@@ -10,6 +10,11 @@ window.SITE_CONFIG = {
   // Необов'язково: без нього форма просто переадресовує на оплату (Stripe) або в Telegram-бот.
   formEndpoint: '',
 
+  // Таймер акції. promoEnd — реальний кінець акції (напр. '2026-11-01T23:59:00+01:00'), спільний для всіх.
+  // Якщо порожньо — кожному відвідувачу іде власний відлік promoHours годин від першого візиту (і так по колу).
+  promoEnd: '',
+  promoHours: 9,
+
   telegramPersonal: 'https://t.me/+48733341364',
   telegramBot: 'https://t.me/mentor_tatoo_Viktoria_bot',
   instagram: 'https://www.instagram.com/viktoriia_ponikarova',

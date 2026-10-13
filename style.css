@@ -809,3 +809,19 @@ main > section.final {
 .popup-footnote-icon{width:12px;height:auto;flex-shrink:0}
 .popup-privacy-icon{width:14px;height:auto;flex-shrink:0}
 html.pop-open,body.popup-open{overflow:hidden}
+
+/* Таймер акції (смуга на сторінці + у попапі) */
+.promo-bar{padding:18px 0;background:var(--bg-2)}
+.promo-bar-in{display:flex;align-items:center;justify-content:space-between;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px}
+.promo-bar-in b{display:block;font-size:14px;color:var(--text)}
+.promo-bar-in span{font-size:13px;color:var(--text);opacity:.65}
+.promo-time{font-size:26px;font-weight:700;color:var(--lime);white-space:nowrap;font-variant-numeric:tabular-nums;text-shadow:0 0 18px rgba(201,234,60,.35)}
+.promo-time span{font-size:inherit;opacity:1;color:inherit}
+.popup-timer-label{margin:16px 0 8px;text-align:center;font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text);opacity:.55}
+.popup-timer{display:flex;justify-content:center;gap:6px;margin-bottom:16px}
+.popup-timer .t-box{background:#050505;border:1px solid var(--line);border-radius:8px;padding:8px 12px;min-width:64px;text-align:center}
+.popup-timer .t-num{display:block;font-size:22px;font-weight:700;color:var(--lime);font-variant-numeric:tabular-nums;line-height:1.2}
+.popup-timer .t-label{font-size:9px;color:var(--text);opacity:.55;text-transform:uppercase;letter-spacing:.5px}
+@media (max-width:520px){.promo-bar-in{padding:14px 16px}.promo-time{font-size:22px}}
+.popup-card .popup-timer-label{font-size:11px;font-weight:600;letter-spacing:1px;line-height:1.2}
+.promo-bar-in span{display:block;line-height:1.4}
