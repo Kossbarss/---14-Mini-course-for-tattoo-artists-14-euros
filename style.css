@@ -905,3 +905,5 @@ html[lang^="ru"] .case-carousel-detail .cases-marquee-badge-row::before { conten
 @media (max-width: 1023.98px) {
   .works-marquee { -webkit-mask-image: linear-gradient(90deg, rgba(0,0,0,.5) 0, #000 14px calc(100% - 14px), rgba(0,0,0,.5) 100%); mask-image: linear-gradient(90deg, rgba(0,0,0,.5) 0, #000 14px calc(100% - 14px), rgba(0,0,0,.5) 100%); }
 }
+/* Рамка відгуку гортається свайпом: вертикальний скрол сторінки лишається, горизонтальний жест обробляє скрипт */
+#caseFanLayout .case-carousel-detail { touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: grab; }
