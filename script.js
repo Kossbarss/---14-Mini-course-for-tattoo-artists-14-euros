@@ -31,7 +31,7 @@
 
   // Попап (структура з лендингу VIP tattoo): відкривається з усіх CTA-кнопок і sticky-панелі.
   // Форма: email + телефон → заявка (за наявності formEndpoint) → Stripe Payment Link
-  // (з підстановкою email), а поки його немає — Telegram-бот.
+  // (з підстановкою email), а поки його немає — Telegram-канал.
   var overlay = d.getElementById('popupOverlay');
   var card = d.getElementById('popupCard');
   var form = d.getElementById('popupForm');
@@ -80,7 +80,7 @@
         var url = cfg.stripeLink;
         if (url) {
           url += (url.indexOf('?') > -1 ? '&' : '?') + 'prefilled_email=' + encodeURIComponent(email);
-        } else { url = cfg.telegramBot || cfg.telegramPersonal; }
+        } else { url = cfg.telegramChannel || cfg.telegramPersonal; }
         if (!url) { btn.disabled = false; btn.innerHTML = label; alert(form.getAttribute('data-err')); return; }
         window.location.href = url;
       };

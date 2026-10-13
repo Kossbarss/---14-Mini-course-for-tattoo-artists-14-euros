@@ -7,7 +7,7 @@ window.SITE_CONFIG = {
   stripeLink: '',
 
   // Адреса для заявок з попапу (напр. Formspree: https://formspree.io/f/xxxx). POST JSON {email, phone, lang, source}.
-  // Необов'язково: без нього форма просто переадресовує на оплату (Stripe) або в Telegram-бот.
+  // Необов'язково: без нього форма просто переадресовує на оплату (Stripe) або в Telegram-канал.
   formEndpoint: '',
 
   // Таймер акції. promoEnd — реальний кінець акції (напр. '2026-11-01T23:59:00+01:00'), спільний для всіх.
@@ -16,7 +16,7 @@ window.SITE_CONFIG = {
   promoHours: 9,
 
   telegramPersonal: 'https://t.me/+48733341364',
-  telegramBot: 'https://t.me/mentor_tatoo_Viktoria_bot',
+  telegramChannel: 'https://t.me/+SpNU4aTMO28xYzY0',
   instagram: 'https://www.instagram.com/viktoriia_ponikarova',
   fullCourse: 'https://vip-tattoo-school.com/'
 };

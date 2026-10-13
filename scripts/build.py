@@ -128,7 +128,7 @@ UA = dict(
     final_note="Оплата через Stripe. Усі дані захищені.",
     sticky_small="14 днів гарантія повернення",
     f_about="VIP tattoo school", f_about_p="Онлайн-навчання для тату-майстрів від Вікторії Поникарової.",
-    f_contacts="Контакти", f_tg="Telegram Вікторії", f_bot="Telegram-бот", f_ig="Instagram",
+    f_contacts="Контакти", f_tg="Telegram Вікторії", f_bot="Telegram-канал", f_ig="Instagram",
     f_more="Школа", f_site="Повний курс VIP tattoo school",
     pop_title="Ти зможеш освоїти основи тату і зробити перші кроки самостійно", pop_sub="Міні-курс для новачків від Вікторії Поникарової: 5 днів, прості уроки й зворотний зв'язок",
     pop_email="Твій email", pop_phone="Твій номер телефону", pop_btn="Забрати за 14 €", pop_loading="Перехід до оплати…",
@@ -252,7 +252,7 @@ RU = dict(
     final_note="Оплата через Stripe. Все данные защищены.",
     sticky_small="14 дней гарантия возврата",
     f_about="VIP tattoo school", f_about_p="Онлайн-обучение для тату-мастеров от Виктории Поникаровой.",
-    f_contacts="Контакты", f_tg="Telegram Виктории", f_bot="Telegram-бот", f_ig="Instagram",
+    f_contacts="Контакты", f_tg="Telegram Виктории", f_bot="Telegram-канал", f_ig="Instagram",
     f_more="Школа", f_site="Полный курс VIP tattoo school",
     pop_title="Ты сможешь освоить основы тату и сделать первые шаги самостоятельно", pop_sub="Мини-курс для новичков от Виктории Поникаровой: 5 дней, простые уроки и обратная связь",
     pop_email="Твой email", pop_phone="Твой номер телефона", pop_btn="Забрать за 14 €", pop_loading="Переход к оплате…",
@@ -496,7 +496,7 @@ def build(t, ua):
     <div><h4>{t['f_about']}</h4><p>{t['f_about_p']}</p></div>
     <div><h4>{t['f_contacts']}</h4>
       <a data-link="telegramPersonal" href="https://t.me/+48733341364">{t['f_tg']}</a>
-      <a data-link="telegramBot" href="https://t.me/mentor_tatoo_Viktoria_bot">{t['f_bot']}</a>
+      <a data-link="telegramChannel" href="https://t.me/+SpNU4aTMO28xYzY0">{t['f_bot']}</a>
       <a data-link="instagram" href="https://www.instagram.com/viktoriia_ponikarova">{t['f_ig']}</a></div>
     <div><h4>{t['f_more']}</h4><a data-link="fullCourse" href="https://vip-tattoo-school.com/">{t['f_site']}</a></div>
     <div class="legal"><p class="legal-links"><a href="privacy.html">{t['f_privacy']}</a><a href="offer.html">{t['f_offer']}</a></p><p>{t['legal']}</p><p style="margin-top:8px">{t['copyright']}</p></div>
