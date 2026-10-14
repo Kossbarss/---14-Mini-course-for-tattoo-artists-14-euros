@@ -907,22 +907,19 @@ html[lang^="ru"] .case-carousel-detail .cases-marquee-badge-row::before { conten
 }
 /* Рамка відгуку гортається свайпом: вертикальний скрол сторінки лишається, горизонтальний жест обробляє скрипт */
 #caseFanLayout .case-carousel-detail { touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: default; }
-/* Теги першого екрана: рівна сітка замість нерівних рядків (мобільні й планшети: 2 колонки, останній — на всю ширину;
-   десктоп: 3 + 2 рівні за шириною теги) */
-.tags { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
-.tags .tag { display: flex; align-items: center; justify-content: center; text-align: center; white-space: normal; min-height: 44px; line-height: 1.25; }
-.tags .tag:last-child:nth-child(odd) { grid-column: 1 / -1; }
-@media (min-width: 1024px) {
-  .tags { grid-template-columns: repeat(6, 1fr); max-width: 560px; }
-  .tags .tag { grid-column: span 2; }
-  .tags .tag:nth-child(4), .tags .tag:nth-child(5) { grid-column: span 3; }
-  .tags .tag:last-child:nth-child(odd) { grid-column: span 3; }
-}
-/* Мобільна та планшетна верстка (<1024px): «tattoo AI-асистент» і «Практика на штучній шкірі» міняються місцями */
+/* Теги першого екрана: кожен — за розміром власного тексту (без розтягування).
+   Десктоп: природний перенос. Телефони й планшети (<1024px): ряди 2 + 2 + 1, порядок задано через order;
+   «tattoo AI-асистент» стоїть замість «Практика на штучній шкірі», яка йде останньою. */
+.tags { display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 0 8px; }
+.tags .tag { display: inline-flex; flex: 0 0 auto; width: auto; min-height: 0; padding: 9px 14px; white-space: nowrap; margin-bottom: 8px; }
+.tags .tags-br { display: none; }
 @media (max-width: 1023.98px) {
+  .tags .tags-br { display: block; flex-basis: 100%; height: 0; margin: 0; padding: 0; }
   .tags .tag:nth-child(1) { order: 1; }
   .tags .tag:nth-child(2) { order: 2; }
-  .tags .tag:nth-child(5):last-child:nth-child(odd) { order: 3; grid-column: auto; }
-  .tags .tag:nth-child(4) { order: 4; }
-  .tags .tag:nth-child(3):nth-child(odd):not(:last-child) { order: 5; grid-column: 1 / -1; }
+  .tags .tags-br:nth-child(6) { order: 3; }
+  .tags .tag:nth-child(5) { order: 4; }
+  .tags .tag:nth-child(4) { order: 5; }
+  .tags .tags-br:nth-child(7) { order: 6; }
+  .tags .tag:nth-child(3) { order: 7; }
 }

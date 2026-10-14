@@ -358,7 +358,7 @@ def build(t, ua):
       <div class="price-row"><span class="price-old">{t['old']}</span><span class="price-new">{t['new']}</span></div>
       {cta()}
       <p class="price-note">{t['price_note']}</p>
-      <div class="tags">{tags}</div>
+      <div class="tags">{tags}<i class="tags-br" aria-hidden="true"></i><i class="tags-br" aria-hidden="true"></i></div>
     </div>
     <div class="hero-photo">
       <span class="bracket tl"></span><span class="bracket tr"></span><span class="bracket bl"></span><span class="bracket br"></span>
