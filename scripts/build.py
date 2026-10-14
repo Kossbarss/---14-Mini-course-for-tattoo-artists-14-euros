@@ -514,7 +514,7 @@ def build(t, ua):
       <a data-link="telegramPersonal" href="https://t.me/+48733341364">{t['f_tg']}</a>
       <a data-link="telegramChannel" href="https://t.me/+SpNU4aTMO28xYzY0">{t['f_bot']}</a>
       <a data-link="instagram" href="https://www.instagram.com/viktoriia_ponikarova">{t['f_ig']}</a></div>
-    <div><h4>{t['f_more']}</h4><a data-link="fullCourse" href="https://vip-tattoo-school.com/">{t['f_site']}</a></div>
+    <div><h4>{t['f_more']}</h4><a data-link="telegramPersonal" href="https://t.me/+48733341364">{t['f_site']}</a></div>
     <div class="legal"><p class="legal-links"><a href="privacy.html">{t['f_privacy']}</a><a href="offer.html">{t['f_offer']}</a></p><p>{t['legal']}</p><p style="margin-top:8px">{t['copyright']}</p></div>
   </div>
 </footer>
