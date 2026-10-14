@@ -918,3 +918,11 @@ html[lang^="ru"] .case-carousel-detail .cases-marquee-badge-row::before { conten
   .tags .tag:nth-child(4), .tags .tag:nth-child(5) { grid-column: span 3; }
   .tags .tag:last-child:nth-child(odd) { grid-column: span 3; }
 }
+/* Мобільна та планшетна верстка (<1024px): «tattoo AI-асистент» і «Практика на штучній шкірі» міняються місцями */
+@media (max-width: 1023.98px) {
+  .tags .tag:nth-child(1) { order: 1; }
+  .tags .tag:nth-child(2) { order: 2; }
+  .tags .tag:nth-child(5):last-child:nth-child(odd) { order: 3; grid-column: auto; }
+  .tags .tag:nth-child(4) { order: 4; }
+  .tags .tag:nth-child(3):nth-child(odd):not(:last-child) { order: 5; grid-column: 1 / -1; }
+}
