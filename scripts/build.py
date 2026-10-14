@@ -539,6 +539,7 @@ def build(t, ua):
     <input type="tel" name="phone" placeholder="{e(t['pop_phone'])}" autocomplete="tel" required>
     <button type="submit" class="btn btn-block">{t['pop_btn']}</button>
   </form>
+  <p class="popup-consent"><a href="privacy.html" target="_blank" rel="noopener">{t['f_privacy']}</a></p>
   <p class="popup-timer-label">{t['tm_title'].lstrip('🔥 ')}</p>
   <div class="popup-timer">
     <div class="t-box"><span class="t-num" data-timer="h">08</span><span class="t-label">{t['tm_h']}</span></div>
