@@ -939,3 +939,17 @@ html[lang^="ru"] .case-carousel-detail .cases-marquee-badge-row::before { conten
 .stats b .roll-col i { font: inherit; line-height: 1.1; }
 .stats b .roll { text-shadow: none; }
 .stats b { text-shadow: none; filter: drop-shadow(0 0 12px var(--glow)); }
+
+/* Бейджі контактів у підвалі */
+.footer .f-contact { display: flex; align-items: center; gap: 10px; }
+.footer .f-contact > span:not(.ci) { min-width: 0; overflow-wrap: anywhere; }
+.footer .ci { flex: 0 0 auto; width: 28px; height: 28px; border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 0 1px rgba(255, 255, 255, .08); }
+.footer .ci svg { width: 18px; height: 18px; display: block; }
+.footer .ci-tg { background: #fff; border-radius: 50%; }
+.footer .ci-tg svg { width: 28px; height: 28px; }
+.footer .ci-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.footer .ci-mail { background: #ea4335; }
+.footer .ci-tel { background: #34c759; }
+.footer .ci-loc { background: #ff5a5f; }
+.footer .f-loc { margin-top: 0; font-size: 14px; }
+.footer a.f-contact:hover .ci { box-shadow: 0 0 0 2px var(--gold); }
