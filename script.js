@@ -213,4 +213,37 @@
   } else {
     items.forEach(function (el) { el.classList.add('in'); });
   }
+
+  // Смуга статистики під першим екраном: цифри «прокручуються» (як одометр), коли смуга з'являється в кадрі.
+  var rollEls = d.querySelectorAll('.stats b');
+  if (rollEls.length) {
+    var rolls = [];
+    rollEls.forEach(function (b) {
+      var txt = b.textContent;
+      b.setAttribute('aria-label', txt);
+      b.textContent = '';
+      var di = 0;
+      txt.split('').forEach(function (ch) {
+        if (!/\d/.test(ch)) { var t = d.createElement('span'); t.className = 'roll-sym'; t.setAttribute('aria-hidden', 'true'); t.textContent = ch; b.appendChild(t); return; }
+        var wrap = d.createElement('span'); wrap.className = 'roll'; wrap.setAttribute('aria-hidden', 'true');
+        var col = d.createElement('span'); col.className = 'roll-col';
+        for (var k = 0; k < 30; k++) { var n = d.createElement('i'); n.textContent = k % 10; col.appendChild(n); }
+        wrap.appendChild(col); b.appendChild(wrap);
+        rolls.push({ col: col, digit: +ch, delay: di++ * 140 });
+      });
+    });
+    var play = function () {
+      rolls.forEach(function (r) {
+        r.col.style.transitionDelay = r.delay + 'ms';
+        r.col.style.transform = 'translateY(' + (-(20 + r.digit)) * 1.1 + 'em)';
+      });
+    };
+    var bar = d.querySelector('.stats');
+    if ('IntersectionObserver' in window) {
+      var sio = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { sio.disconnect(); requestAnimationFrame(function () { requestAnimationFrame(play); }); }
+      }, { threshold: 0.4 });
+      sio.observe(bar);
+    } else { play(); }
+  }
 })();

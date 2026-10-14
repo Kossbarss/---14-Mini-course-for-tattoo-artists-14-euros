@@ -926,3 +926,16 @@ html[lang^="ru"] .case-carousel-detail .cases-marquee-badge-row::before { conten
 
 /* контакти в підвалі */
 .footer .f-loc { display: block; margin-top: 6px; opacity: .7; font-size: 14px; }
+
+/* Смуга статистики: цифри-одометр */
+.stats b { font-variant-numeric: tabular-nums; }
+.stats .roll { display: inline-block; height: 1.1em; overflow: hidden; vertical-align: top; }
+.stats .roll-col { display: block; transform: translateY(0); transition: transform 2.2s cubic-bezier(.16, .84, .3, 1); will-change: transform; }
+.stats .roll-col i { display: block; height: 1.1em; line-height: 1.1; font-style: normal; }
+.stats .roll-sym { display: inline-block; vertical-align: top; }
+.stats b .roll, .stats b .roll-col, .stats b .roll-sym { font: inherit; color: inherit; letter-spacing: inherit; text-shadow: inherit; }
+.stats b .roll, .stats b .roll-col { line-height: 1.1; }
+.stats b .roll-col { display: block; }
+.stats b .roll-col i { font: inherit; line-height: 1.1; }
+.stats b .roll { text-shadow: none; }
+.stats b { text-shadow: none; filter: drop-shadow(0 0 12px var(--glow)); }
