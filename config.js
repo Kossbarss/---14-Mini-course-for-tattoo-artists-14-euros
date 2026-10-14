@@ -15,6 +15,9 @@ window.SITE_CONFIG = {
   promoEnd: '',
   promoHours: 4,
 
+  // Telegram підтримки (адміністратора). Поки не вказано окремий — кнопки «Підтримка» ведуть на Telegram Вікторії.
+  telegramSupport: 'https://t.me/+48733341364',
+
   telegramPersonal: 'https://t.me/+48733341364',
   telegramChannel: 'https://t.me/+SpNU4aTMO28xYzY0',
   instagram: 'https://www.instagram.com/viktoriia_ponikarova',

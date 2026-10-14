@@ -132,7 +132,7 @@ UA = dict(
     consent='Натискаючи кнопку, ти погоджуєшся з <a href="offer.html" target="_blank" rel="noopener">договором оферти</a> та <a href="privacy.html" target="_blank" rel="noopener">політикою конфіденційності</a>.',
     sticky_small="Повернення коштів протягом 14 днів",
     f_about="VIP tattoo school", f_about_p="Онлайн-навчання для тату-майстрів від Вікторії Понікарової.",
-    f_contacts="Контакти", f_loc="Польща", f_tg="Telegram Вікторії", f_bot="Telegram-канал", f_ig="Instagram",
+    f_contacts="Контакти", f_loc="Польща", f_support="Підтримка в Telegram", f_tg="Telegram Вікторії", f_bot="Telegram-канал", f_ig="Instagram",
     f_more="Школа", f_site="Повний курс VIP tattoo school",
     pop_title="Ти зможеш освоїти основи тату і зробити перші кроки самостійно", pop_sub="Міні-курс для новачків від Вікторії Понікарової: 5 відеоуроків, доступ на 2 місяці й зворотний зв'язок",
     pop_email="Твій email", pop_phone="Твій номер телефону", pop_btn="Забрати за 14 €", pop_loading="Перехід до оплати…",
@@ -259,7 +259,7 @@ RU = dict(
     consent='Нажимая кнопку, ты соглашаешься с <a href="offer.html" target="_blank" rel="noopener">договором оферты</a> и <a href="privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a>.',
     sticky_small="Возврат средств в течение 14 дней",
     f_about="VIP tattoo school", f_about_p="Онлайн-обучение для тату-мастеров от Виктории Поникаровой.",
-    f_contacts="Контакты", f_loc="Польша", f_tg="Telegram Виктории", f_bot="Telegram-канал", f_ig="Instagram",
+    f_contacts="Контакты", f_loc="Польша", f_support="Поддержка в Telegram", f_tg="Telegram Виктории", f_bot="Telegram-канал", f_ig="Instagram",
     f_more="Школа", f_site="Полный курс VIP tattoo school",
     pop_title="Ты сможешь освоить основы тату и сделать первые шаги самостоятельно", pop_sub="Мини-курс для новичков от Виктории Поникаровой: 5 видеоуроков, доступ на 2 месяца и обратная связь",
     pop_email="Твой email", pop_phone="Твой номер телефона", pop_btn="Забрать за 14 €", pop_loading="Переход к оплате…",
@@ -324,7 +324,7 @@ def build(t, ua):
     cta = lambda cls="": f'<a class="btn {cls}" data-cta href="#">{t["cta"]}</a>'
 
     org = {"@type": "Organization", "@id": f"{SITE}/#org", "name": "VIP tattoo school", "url": f"{SITE}/",
-           "logo": f"{SITE}/assets/favicon-logo.png", "email": "mentor@victoriaponikarova.online", "telephone": "+48733341364",
+           "logo": f"{SITE}/assets/favicon-logo.png", "telephone": "+48733341364",
            "sameAs": ["https://www.instagram.com/viktoriia_ponikarova"]}
     person = {"@type": "Person", "name": "Viktoria Ponikarova", "jobTitle": t["ld_job"], "worksFor": {"@id": f"{SITE}/#org"},
               "sameAs": ["https://www.instagram.com/viktoriia_ponikarova"]}
@@ -561,9 +561,9 @@ def build(t, ua):
       <a class="f-contact" data-link="telegramPersonal" href="https://t.me/+48733341364">{ci('tg')}<span>{t['f_tg']}</span></a>
       <a class="f-contact" data-link="telegramChannel" href="https://t.me/+SpNU4aTMO28xYzY0">{ci('tg')}<span>{t['f_bot']}</span></a>
       <a class="f-contact" data-link="instagram" href="https://www.instagram.com/viktoriia_ponikarova">{ci('ig')}<span>{t['f_ig']}</span></a>
-      <a class="f-contact" href="mailto:mentor@victoriaponikarova.online">{ci('mail')}<span>mentor@victoriaponikarova.online</span></a>
       <a class="f-contact" href="tel:+48733341364">{ci('tel')}<span>+48 733 341 364</span></a>
-      <span class="f-contact f-loc">{ci('loc')}<span>{t['f_loc']}</span></span></div>
+      <span class="f-contact f-loc">{ci('loc')}<span>{t['f_loc']}</span></span>
+      <a class="f-support" data-link="telegramSupport" href="https://t.me/+48733341364" target="_blank" rel="noopener noreferrer">{ci('tg')}<span>{t['f_support']}</span></a></div>
     <div><h4>{t['f_more']}</h4><a data-link="telegramPersonal" href="https://t.me/+48733341364">{t['f_site']}</a></div>
     <div class="legal"><p class="legal-links"><a href="privacy.html">{t['f_privacy']}</a><a href="offer.html">{t['f_offer']}</a></p><p>{t['legal']}</p><p style="margin-top:8px">{t['copyright']}</p></div>
   </div>
@@ -612,18 +612,16 @@ def build(t, ua):
 
 THX = {
     "ua": dict(lang="uk", title="Дякуємо за оплату — Тату Старт", h="Оплата пройшла успішно", sub="Дякуємо! Ти в курсі «Тату Старт: перші лінії». Ось що робити далі — це займе кілька хвилин.",
-               steps=[("Перевір пошту", "Stripe надішле чек на email, який ти вказав під час оплати. Якщо листа немає, зазирни в «Спам»."),
-                      ("Зайди в Telegram", "Натисни кнопку нижче й напиши Вікторії або долучись до закритого каналу — там відкривається доступ до уроків."),
+               steps=[("Зайди в Telegram", "Натисни кнопку нижче й напиши Вікторії або долучись до закритого каналу — там відкривається доступ до уроків."),
                       ("Починай з першого уроку", "Перший відеоурок відкривається в день оплати, далі — по одному щодня. 5 відеоуроків, доступ на 2 місяці."),
                       ("Надсилай практичні завдання", "Виконуй вправи на штучній шкірі й надсилай результат — Вікторія розбере твої роботи й підкаже, що виправити.")],
-               btn="Перейти в Telegram", note="Не бачиш доступу протягом години? Напиши нам у Telegram або на пошту — відповімо й швидко допоможемо.",
+               btn="Перейти в Telegram", note="Не бачиш доступу протягом години або щось не виходить? Напиши в підтримку в Telegram — відповімо й швидко допоможемо.", support="Підтримка в Telegram",
                guar="14 днів гарантії повернення коштів — якщо курс не підійде, просто напиши нам.", home="На головну", priv="Політика конфіденційності", offer="Договір оферти", step="Крок"),
     "ru": dict(lang="ru", title="Спасибо за оплату — Тату Старт", h="Оплата прошла успешно", sub="Спасибо! Ты в курсе «Тату Старт: первые линии». Вот что делать дальше — это займёт несколько минут.",
-               steps=[("Проверь почту", "Stripe отправит чек на email, который ты указал при оплате. Если письма нет, загляни в «Спам»."),
-                      ("Зайди в Telegram", "Нажми кнопку ниже и напиши Виктории или присоединись к закрытому каналу — там открывается доступ к урокам."),
+               steps=[("Зайди в Telegram", "Нажми кнопку ниже и напиши Виктории или присоединись к закрытому каналу — там открывается доступ к урокам."),
                       ("Начни с первого урока", "Первый видеоурок открывается в день оплаты, дальше — по одному каждый день. 5 видеоуроков, доступ на 2 месяца."),
                       ("Отправляй практические задания", "Выполняй упражнения на искусственной коже и присылай результат — Виктория разберёт твои работы и подскажет, что исправить.")],
-               btn="Перейти в Telegram", note="Не видишь доступ в течение часа? Напиши нам в Telegram или на почту — ответим и быстро поможем.",
+               btn="Перейти в Telegram", note="Не видишь доступ в течение часа или что-то не получается? Напиши в поддержку в Telegram — ответим и быстро поможем.", support="Поддержка в Telegram",
                guar="14 дней гарантии возврата средств — если курс не подойдёт, просто напиши нам.", home="На главную", priv="Политика конфиденциальности", offer="Договор оферты", step="Шаг"),
 }
 
@@ -660,6 +658,7 @@ def build_thanks(ua):
     <ol class="thx-steps">{steps}</ol>
     <a class="btn" data-link="telegramPersonal" href="https://t.me/+48733341364" target="_blank" rel="noopener noreferrer">{ci('tg')}{t['btn']}</a>
     <p class="thx-note">{t['note']}</p>
+    <a class="btn btn-ghost thx-support" data-link="telegramSupport" href="https://t.me/+48733341364" target="_blank" rel="noopener noreferrer">{ci('tg')}{t['support']}</a>
     <p class="thx-guar">{t['guar']}</p>
     <p class="thx-links"><a href="{home}">{t['home']}</a><a href="{p}privacy.html">{t['priv']}</a><a href="{p}offer.html">{t['offer']}</a></p>
   </div>
