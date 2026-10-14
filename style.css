@@ -907,3 +907,14 @@ html[lang^="ru"] .case-carousel-detail .cases-marquee-badge-row::before { conten
 }
 /* Рамка відгуку гортається свайпом: вертикальний скрол сторінки лишається, горизонтальний жест обробляє скрипт */
 #caseFanLayout .case-carousel-detail { touch-action: pan-y; user-select: none; -webkit-user-select: none; cursor: default; }
+/* Теги першого екрана: рівна сітка замість нерівних рядків (мобільні й планшети: 2 колонки, останній — на всю ширину;
+   десктоп: 3 + 2 рівні за шириною теги) */
+.tags { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.tags .tag { display: flex; align-items: center; justify-content: center; text-align: center; white-space: normal; min-height: 44px; line-height: 1.25; }
+.tags .tag:last-child:nth-child(odd) { grid-column: 1 / -1; }
+@media (min-width: 1024px) {
+  .tags { grid-template-columns: repeat(6, 1fr); max-width: 560px; }
+  .tags .tag { grid-column: span 2; }
+  .tags .tag:nth-child(4), .tags .tag:nth-child(5) { grid-column: span 3; }
+  .tags .tag:last-child:nth-child(odd) { grid-column: span 3; }
+}
