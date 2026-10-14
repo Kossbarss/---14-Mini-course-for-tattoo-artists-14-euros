@@ -1,0 +1,13 @@
+{
+  "name": "VIP tattoo school — Тату Старт: перші лінії",
+  "short_name": "Тату Старт",
+  "start_url": "./",
+  "display": "browser",
+  "background_color": "#080808",
+  "theme_color": "#080808",
+  "lang": "uk",
+  "icons": [
+    {"src": "assets/favicon-logo.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "assets/apple-touch-icon.png", "sizes": "180x180", "type": "image/png"}
+  ]
+}

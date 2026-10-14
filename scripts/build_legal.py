@@ -266,7 +266,7 @@ def page(lang, kind, body):
   <a href="privacy.html">{"Політика конфіденційності" if lang == "ua" else "Политика конфиденциальности"}</a>
   <a href="offer.html">{"Договір оферти" if lang == "ua" else "Договор оферты"}</a>
   <a href="{other}">{other_label}</a>
-  <span>Firma Виктория Поникарова · NIP 6492327660</span>
+  <span>Viktoria Ponikarova · NIP 6492327660</span>
 </div></footer>
 </body>
 </html>

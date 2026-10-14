@@ -199,7 +199,7 @@ section { padding: 72px 0; }
 .instructor-checklist li { display: flex; gap: 12px; align-items: flex-start; line-height: 1.5; }
 .instructor-checklist .check { color: var(--gold-light); flex-shrink: 0; }
 .instructor-checklist strong { color: var(--white); font-weight: 700; }
-.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255, 216, 136, .25); }
+.stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 32px; padding-top: 28px; border-top: 1px solid rgba(255, 216, 136, .25); }
 .stat-item { text-align: center; }
 .stat-value { font-family: var(--font-display); font-weight: 700; font-size: 1.8rem; line-height: 1.2; color: var(--gold-light); margin-bottom: 6px; }
 .stat-label { font-size: .85rem; line-height: 1.45; color: rgba(250, 246, 239, .65); }
@@ -519,7 +519,7 @@ section { padding: 72px 0; }
   .hero-grid { grid-template-columns: 1fr; gap: 36px; }
   .instructor-layout { grid-template-columns: 1fr; grid-template-areas: "identity" "photo" "copy"; row-gap: 24px; }
   .instructor-identity { justify-content: center; text-align: center; }
-  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .stats-row { grid-template-columns: repeat(3, 1fr); gap: 10px; }
   .hero-photo { max-width: 440px; margin-inline: auto; }
   .hero-chip { left: 12px; }
   .cards-2, .cards-3, .vs { grid-template-columns: 1fr; }
@@ -923,3 +923,6 @@ html[lang^="ru"] .case-carousel-detail .cases-marquee-badge-row::before { conten
   .tags .tags-br:nth-child(7) { order: 6; }
   .tags .tag:nth-child(3) { order: 7; }
 }
+
+/* контакти в підвалі */
+.footer .f-loc { display: block; margin-top: 6px; opacity: .7; font-size: 14px; }
