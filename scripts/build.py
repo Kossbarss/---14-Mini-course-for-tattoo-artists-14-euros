@@ -610,9 +610,72 @@ def build(t, ua):
 """
 
 
+THX = {
+    "ua": dict(lang="uk", title="Дякуємо за оплату — Тату Старт", h="Оплата пройшла успішно", sub="Дякуємо! Ти в курсі «Тату Старт: перші лінії». Ось що робити далі — це займе кілька хвилин.",
+               steps=[("Перевір пошту", "Stripe надішле чек на email, який ти вказав під час оплати. Якщо листа немає, зазирни в «Спам»."),
+                      ("Зайди в Telegram", "Натисни кнопку нижче й напиши Вікторії або долучись до закритого каналу — там відкривається доступ до уроків."),
+                      ("Починай з першого уроку", "Перший відеоурок відкривається в день оплати, далі — по одному щодня. 5 відеоуроків, доступ на 2 місяці."),
+                      ("Надсилай практичні завдання", "Виконуй вправи на штучній шкірі й надсилай результат — Вікторія розбере твої роботи й підкаже, що виправити.")],
+               btn="Перейти в Telegram", note="Не бачиш доступу протягом години? Напиши нам у Telegram або на пошту — відповімо й швидко допоможемо.",
+               guar="14 днів гарантії повернення коштів — якщо курс не підійде, просто напиши нам.", home="На головну", priv="Політика конфіденційності", offer="Договір оферти", step="Крок"),
+    "ru": dict(lang="ru", title="Спасибо за оплату — Тату Старт", h="Оплата прошла успешно", sub="Спасибо! Ты в курсе «Тату Старт: первые линии». Вот что делать дальше — это займёт несколько минут.",
+               steps=[("Проверь почту", "Stripe отправит чек на email, который ты указал при оплате. Если письма нет, загляни в «Спам»."),
+                      ("Зайди в Telegram", "Нажми кнопку ниже и напиши Виктории или присоединись к закрытому каналу — там открывается доступ к урокам."),
+                      ("Начни с первого урока", "Первый видеоурок открывается в день оплаты, дальше — по одному каждый день. 5 видеоуроков, доступ на 2 месяца."),
+                      ("Отправляй практические задания", "Выполняй упражнения на искусственной коже и присылай результат — Виктория разберёт твои работы и подскажет, что исправить.")],
+               btn="Перейти в Telegram", note="Не видишь доступ в течение часа? Напиши нам в Telegram или на почту — ответим и быстро поможем.",
+               guar="14 дней гарантии возврата средств — если курс не подойдёт, просто напиши нам.", home="На главную", priv="Политика конфиденциальности", offer="Договор оферты", step="Шаг"),
+}
+
+
+def build_thanks(ua):
+    t = THX["ua" if ua else "ru"]
+    p = "" if ua else "../"
+    home = f"{p or './'}"
+    steps = "".join(f'<li class="thx-step"><span class="thx-n">{i}</span><div><h3>{h}</h3><p>{b}</p></div></li>' for i, (h, b) in enumerate(t["steps"], 1))
+    return f"""<!DOCTYPE html>
+<html lang="{t['lang']}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>{t['title']}</title>
+<meta name="theme-color" content="#080808">
+<link rel="icon" href="{p}assets/favicon-logo.png" type="image/png">
+<link rel="apple-touch-icon" href="{p}assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Roboto:wght@400;700&family=Poppins:wght@400;500;600;700&family=Roboto+Flex:wght@700&display=swap&subset=cyrillic,latin" rel="stylesheet">
+<link rel="stylesheet" href="{p}style.css?v={ver('style.css')}">
+</head>
+<body class="thx-body">
+<header class="header"><div class="container">
+  <a class="brand" href="{home}"><img src="{p}assets/logo-mark.png" alt="VIP tattoo school" width="56" height="56">VIP tattoo school</a>
+</div></header>
+<main class="thx">
+  <div class="container thx-wrap">
+    <div class="thx-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h1>{t['h']}</h1>
+    <p class="thx-sub">{t['sub']}</p>
+    <ol class="thx-steps">{steps}</ol>
+    <a class="btn" data-link="telegramPersonal" href="https://t.me/+48733341364" target="_blank" rel="noopener noreferrer">{ci('tg')}{t['btn']}</a>
+    <p class="thx-note">{t['note']}</p>
+    <p class="thx-guar">{t['guar']}</p>
+    <p class="thx-links"><a href="{home}">{t['home']}</a><a href="{p}privacy.html">{t['priv']}</a><a href="{p}offer.html">{t['offer']}</a></p>
+  </div>
+</main>
+<script src="{p}config.js?v={ver('config.js')}"></script>
+<script>(function(){{var c=window.SITE_CONFIG||{{}};document.querySelectorAll('[data-link]').forEach(function(a){{var v=c[a.getAttribute('data-link')];if(v)a.href=v;}});}})();</script>
+</body>
+</html>
+"""
+
+
 (ROOT / "ru").mkdir(exist_ok=True)
 (ROOT / "index.html").write_text(build(UA, True), encoding="utf-8")
 (ROOT / "ru" / "index.html").write_text(build(RU, False), encoding="utf-8")
+(ROOT / "thanks.html").write_text(build_thanks(True), encoding="utf-8")
+(ROOT / "ru" / "thanks.html").write_text(build_thanks(False), encoding="utf-8")
 print("built index.html, ru/index.html")
 
 # юридичні сторінки (використовують хеш style.css, тому запускаються останніми)

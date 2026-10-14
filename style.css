@@ -953,3 +953,24 @@ html[lang^="ru"] .case-carousel-detail .cases-marquee-badge-row::before { conten
 .footer .ci-loc { background: #ff5a5f; }
 .footer .f-loc { margin-top: 0; font-size: 14px; }
 .footer a.f-contact:hover .ci { box-shadow: 0 0 0 2px var(--gold); }
+
+/* Сторінка «Дякуємо» */
+.thx-body { background: var(--brand-bg, #080808); color: var(--brand-text, #ececec); }
+.thx { padding: 140px 0 72px; }
+.thx-wrap { max-width: 720px; text-align: center; }
+.thx-check { width: 84px; height: 84px; margin: 0 auto 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--brand-btn-text, #69470c); background: linear-gradient(180deg, var(--brand-gold-2, #ffe5b1), var(--brand-gold, #ffd888)); box-shadow: 0 0 40px rgba(255, 216, 136, .35); }
+.thx-check svg { width: 44px; height: 44px; }
+.thx h1 { font-size: clamp(30px, 5vw, 44px); margin: 0 0 12px; }
+.thx-sub { font-size: 18px; opacity: .85; margin: 0 auto 34px; max-width: 560px; }
+.thx-steps { list-style: none; margin: 0 0 34px; padding: 0; display: grid; gap: 14px; text-align: left; }
+.thx-step { display: flex; gap: 16px; align-items: flex-start; padding: 18px 20px; border-radius: 16px; border: 1px solid rgba(255, 216, 136, .25); background: linear-gradient(180deg, var(--brand-card-from, #101010), var(--brand-card-to, #1c1c1c)); }
+.thx-n { flex: 0 0 auto; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--brand-btn-text, #69470c); background: var(--brand-gold, #ffd888); }
+.thx-step h3 { margin: 0 0 4px; font-size: 18px; }
+.thx-step p { margin: 0; opacity: .8; font-size: 15px; }
+.thx .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+.thx .btn .ci { width: 28px; height: 28px; border-radius: 50%; background: #fff; display: inline-flex; }
+.thx .btn .ci svg { width: 28px; height: 28px; }
+.thx-note { margin: 18px auto 0; max-width: 520px; font-size: 14px; opacity: .7; }
+.thx-guar { margin: 22px 0 0; font-size: 15px; color: var(--brand-gold, #ffd888); }
+.thx-links { margin: 30px 0 0; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; font-size: 14px; }
+.thx-links a { opacity: .7; text-decoration: underline; }
