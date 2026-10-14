@@ -107,7 +107,7 @@
   // відлік cfg.promoHours годин від першого візиту (зберігається в localStorage), після нуля стартує знову.
   var tEls = { h: d.querySelectorAll('[data-timer="h"]'), m: d.querySelectorAll('[data-timer="m"]'), s: d.querySelectorAll('[data-timer="s"]') };
   if (tEls.s.length) {
-    var span = (cfg.promoHours || 9) * 3600000, fixedEnd = cfg.promoEnd ? Date.parse(cfg.promoEnd) : NaN;
+    var span = (cfg.promoHours || 4) * 3600000, fixedEnd = cfg.promoEnd ? Date.parse(cfg.promoEnd) : NaN;
     var end = fixedEnd;
     if (isNaN(end)) {
       try { end = parseInt(localStorage.getItem('promoEnd'), 10); } catch (e) {}

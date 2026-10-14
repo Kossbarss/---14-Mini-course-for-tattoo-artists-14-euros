@@ -13,7 +13,7 @@ window.SITE_CONFIG = {
   // Таймер акції. promoEnd — реальний кінець акції (напр. '2026-11-01T23:59:00+01:00'), спільний для всіх.
   // Якщо порожньо — кожному відвідувачу іде власний відлік promoHours годин від першого візиту (і так по колу).
   promoEnd: '',
-  promoHours: 9,
+  promoHours: 4,
 
   telegramPersonal: 'https://t.me/+48733341364',
   telegramChannel: 'https://t.me/+SpNU4aTMO28xYzY0',
